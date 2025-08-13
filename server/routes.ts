@@ -166,16 +166,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Submit complete exam
   app.post("/api/exam/:sessionKey/submit", async (req, res) => {
-    const { sessionKey } = req.params;
-    const session = await storage.getExamSessionByKey(sessionKey);
-    
-    if (!session) {
-      return res.status(404).json({ error: "Session not found" });
-    }
+    try {
+      const { sessionKey } = req.params;
+      const session = await storage.getExamSessionByKey(sessionKey);
+      
+      if (!session) {
+        return res.status(404).json({ error: "Session not found" });
+      }
 
-    if (session.completed) {
-      return res.status(400).json({ error: "Exam already completed" });
-    }
+      if (session.completed) {
+        return res.status(400).json({ error: "Exam already completed" });
+      }
 
     // Get questions to calculate score
     let difficulty = session.maintenanceLevel;
@@ -245,6 +246,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       questions: examQuestions,
       answers
     });
+    } catch (error) {
+      console.error("Error submitting exam:", error);
+      res.status(500).json({ error: "Internal server error during exam submission" });
+    }
   });
 
   // Get exam results

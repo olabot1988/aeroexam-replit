@@ -113,9 +113,26 @@ export default function Examination() {
       setLocation(`/results/${sessionKey}`);
     },
     onError: (error) => {
+      // Clean up error message to remove any special characters or JSON formatting
+      let cleanMessage = error.message;
+      try {
+        // Try to extract just the error text if it's formatted strangely
+        if (cleanMessage.includes('{') && cleanMessage.includes('}')) {
+          const match = cleanMessage.match(/"error":\s*"([^"]+)"/);
+          if (match) {
+            cleanMessage = match[1];
+          }
+        }
+        // Remove any status codes from the beginning
+        cleanMessage = cleanMessage.replace(/^\d+:\s*/, '');
+      } catch {
+        // If parsing fails, use original message
+        cleanMessage = "Unable to submit exam. Please try again.";
+      }
+      
       toast({
         title: "Submission Error",
-        description: error.message,
+        description: cleanMessage,
         variant: "destructive",
       });
     },

@@ -3,7 +3,7 @@ import { Progress } from "@/components/ui/progress";
 import type { ExamSession } from "@shared/schema";
 
 interface ExamHeaderProps {
-  session: ExamSession;
+  session: ExamSession | null;
   currentQuestion: number;
   totalQuestions: number;
   timeLeft: string;
@@ -31,7 +31,7 @@ export default function ExamHeader({
           <div>
             <h2 className="text-xl font-bold text-professional-gray-dark">Aviation Maintenance Examination</h2>
             <p className="text-professional-gray">
-              Participant: {session.firstName} {session.lastName} ({session.maintenanceLevel})
+              Participant: {session?.firstName || 'Loading...'} {session?.lastName || ''} ({session?.maintenanceLevel || ''})
             </p>
           </div>
           <div className="text-right">
