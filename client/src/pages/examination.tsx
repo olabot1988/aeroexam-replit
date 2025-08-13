@@ -24,6 +24,7 @@ export default function Examination() {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [flaggedQuestions, setFlaggedQuestions] = useState<number[]>([]);
+  const [examInitialized, setExamInitialized] = useState(false);
 
   // Get session data
   const { data: session, isLoading: sessionLoading } = useQuery({
@@ -39,6 +40,8 @@ export default function Examination() {
     },
     onSuccess: (data) => {
       setQuestions(data.questions);
+      setExamInitialized(true);
+      
       if (data.session.startTime) {
         // Calculate remaining time if exam was already started
         const startTime = new Date(data.session.startTime).getTime();
@@ -60,11 +63,14 @@ export default function Examination() {
       }
     },
     onError: (error) => {
-      toast({
-        title: "Error Starting Exam",
-        description: error.message,
-        variant: "destructive",
-      });
+      // Only show error for genuine failures, not "already started" cases
+      if (!error.message.includes("already started")) {
+        toast({
+          title: "Error Starting Exam",
+          description: error.message,
+          variant: "destructive",
+        });
+      }
     },
   });
 
@@ -136,13 +142,10 @@ export default function Examination() {
 
   // Start exam when component mounts
   useEffect(() => {
-    if (session && !session.startTime) {
-      startExamMutation.mutate();
-    } else if (session && session.startTime) {
-      // Already started, just load the data
+    if (session && !examInitialized && !startExamMutation.isPending) {
       startExamMutation.mutate();
     }
-  }, [session]);
+  }, [session, examInitialized, startExamMutation.isPending]);
 
   // Load selected answer when question changes
   useEffect(() => {

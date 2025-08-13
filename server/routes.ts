@@ -53,8 +53,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(404).json({ error: "Session not found" });
     }
 
+    // If exam already started, return the existing session data instead of error
     if (session.startTime) {
-      return res.status(400).json({ error: "Exam already started" });
+      // Get questions for the session
+      let difficulty = session.maintenanceLevel;
+      if (session.examType === "CDR Progression Written Exam") {
+        const levels = ["ML0", "ML1", "ML2", "ML3", "ML4"];
+        const currentIndex = levels.indexOf(session.maintenanceLevel);
+        if (currentIndex < levels.length - 1) {
+          difficulty = levels[currentIndex + 1];
+        }
+      } else if (session.examType === "Technical Inspector Exam") {
+        difficulty = "ML3";
+      }
+
+      const allQuestions = await storage.getQuestionsByDifficulty(difficulty);
+      const shuffledQuestions = allQuestions.sort(() => Math.random() - 0.5);
+      const examQuestions = shuffledQuestions.slice(0, 50);
+      
+      return res.json({
+        session,
+        questions: examQuestions,
+        totalQuestions: 50
+      });
     }
 
     // Determine difficulty level based on exam type and maintenance level
