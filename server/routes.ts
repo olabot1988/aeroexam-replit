@@ -188,8 +188,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const totalQuestions = 50;
     const score = Math.round((correctCount / totalQuestions) * 100);
     
-    // Determine passing threshold (90% for most exams, 70% for some based on requirements)
-    const passingThreshold = session.examType === "Annual Exam" ? 90 : 70;
+    // Determine passing threshold (90% for all exams per updated requirements)
+    const passingThreshold = 90;
     const passed = score >= passingThreshold;
 
     // Calculate time taken

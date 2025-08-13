@@ -82,3 +82,9 @@ Preferred communication style: Simple, everyday language.
 - `/admin/questions/:id/edit` - Edit existing question
 
 **Enhanced Storage Interface**: Extended storage layer to support question CRUD operations including getAllQuestions, getQuestionById, updateQuestion, and deleteQuestion methods.
+
+**Updated Exam Requirements (Latest Changes)**:
+- Time limit increased from 60 minutes to 8 hours for all examinations
+- Minimum passing score standardized to 90% for all exam types (previously 70% for some)
+- Time display format updated to show hours when applicable (H:MM:SS format)
+- Updated warning thresholds for remaining time alerts

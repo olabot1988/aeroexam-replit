@@ -1,6 +1,11 @@
 export const formatTime = (seconds: number): string => {
-  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
   const secs = seconds % 60;
+  
+  if (hours > 0) {
+    return `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  }
   return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 };
 
@@ -13,7 +18,7 @@ export const calculateTimeElapsed = (startTime: string, endTime?: string): strin
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 };
 
-export const calculateRemainingTime = (startTime: string, totalTimeMinutes: number = 60): number => {
+export const calculateRemainingTime = (startTime: string, totalTimeMinutes: number = 480): number => {
   const start = new Date(startTime).getTime();
   const now = new Date().getTime();
   const elapsed = Math.floor((now - start) / 1000);
@@ -22,9 +27,20 @@ export const calculateRemainingTime = (startTime: string, totalTimeMinutes: numb
 };
 
 export const getTimeWarningClass = (timeString: string): string => {
-  const [minutes] = timeString.split(':').map(Number);
-  if (minutes <= 5) return 'text-red-600';
-  if (minutes <= 15) return 'text-amber-600';
+  const timeParts = timeString.split(':').map(Number);
+  let totalMinutes: number;
+  
+  if (timeParts.length === 3) {
+    // Hours:Minutes:Seconds format
+    const [hours, minutes] = timeParts;
+    totalMinutes = hours * 60 + minutes;
+  } else {
+    // Minutes:Seconds format
+    totalMinutes = timeParts[0];
+  }
+  
+  if (totalMinutes <= 30) return 'text-red-600';
+  if (totalMinutes <= 60) return 'text-amber-600';
   return 'text-aviation-blue';
 };
 

@@ -38,7 +38,7 @@ export default function Results() {
   };
 
   const getPassingThreshold = (examType: string) => {
-    return examType === "Annual Exam" ? 90 : 70;
+    return 90;
   };
 
   if (isLoading) {

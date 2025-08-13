@@ -29,7 +29,7 @@ export default function ExamIntro() {
   };
 
   const getPassingScore = (examType: string) => {
-    return examType === "Annual Exam" ? "90%" : "70%";
+    return "90%";
   };
 
   if (isLoading) {
@@ -105,7 +105,7 @@ export default function ExamIntro() {
             <div className="bg-amber-50 rounded-lg p-6 border border-amber-100">
               <h3 className="font-semibold text-amber-800 mb-4">Important Instructions</h3>
               <ul className="text-amber-700 text-sm space-y-2 text-left max-w-2xl mx-auto">
-                <li>• You have 60 minutes to complete the examination</li>
+                <li>• You have 8 hours to complete the examination</li>
                 <li>• You can flag questions for review if needed</li>
                 <li>• Your progress is automatically saved</li>
                 <li>• Use the "Leave Exam" button if you need to continue later</li>

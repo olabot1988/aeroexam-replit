@@ -20,7 +20,7 @@ export default function Examination() {
   
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [timeLeft, setTimeLeft] = useState(3600); // 60 minutes in seconds
+  const [timeLeft, setTimeLeft] = useState(28800); // 8 hours in seconds
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [flaggedQuestions, setFlaggedQuestions] = useState<number[]>([]);
@@ -44,7 +44,7 @@ export default function Examination() {
         const startTime = new Date(data.session.startTime).getTime();
         const now = new Date().getTime();
         const elapsed = Math.floor((now - startTime) / 1000);
-        const remaining = Math.max(0, 3600 - elapsed);
+        const remaining = Math.max(0, 28800 - elapsed);
         setTimeLeft(remaining);
       }
       
