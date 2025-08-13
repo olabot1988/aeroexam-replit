@@ -32,5 +32,5 @@ export const getExamDifficulty = (maintenanceLevel: string, examType: string): s
 };
 
 export const getPassingScore = (examType: string): number => {
-  return examType === "Annual Exam" ? 90 : 70;
+  return 90; // Updated to 90% for all exam types
 };

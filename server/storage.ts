@@ -35,6 +35,7 @@ export class MemStorage implements IStorage {
     
     // Initialize with sample questions
     this.initializeQuestions();
+    this.initializeML1Questions();
   }
 
   private initializeQuestions() {
@@ -262,6 +263,367 @@ export class MemStorage implements IStorage {
     const examResult: ExamResult = { ...result, id };
     this.examResults.set(id, examResult);
     return examResult;
+  }
+  private initializeML1Questions() {
+    const ml1Questions: InsertQuestion[] = [
+      {
+        text: "What is the standard operating pressure for most aircraft hydraulic systems?",
+        options: ["1000 PSI", "2000 PSI", "3000 PSI", "4000 PSI"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Hydraulic Systems"
+      },
+      {
+        text: "Which component is responsible for converting mechanical energy to electrical energy in aircraft?",
+        options: ["Starter", "Generator", "Battery", "Inverter"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Electrical Systems"
+      },
+      {
+        text: "What is the primary function of aircraft fuel pumps?",
+        options: ["Filter fuel", "Heat fuel", "Pressurize fuel", "Cool fuel"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Fuel Systems"
+      },
+      {
+        text: "In aircraft engines, what does the term 'TBO' stand for?",
+        options: ["Time Between Overhauls", "Total Brake Operation", "Turbine Blade Operation", "Throttle Body Opening"],
+        correctAnswer: 0,
+        difficulty: "ML1",
+        category: "Engine Systems"
+      },
+      {
+        text: "Which type of brake system is most commonly used on modern commercial aircraft?",
+        options: ["Drum brakes", "Disc brakes", "Band brakes", "Magnetic brakes"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Landing Gear"
+      },
+      {
+        text: "What is the purpose of engine oil in aircraft systems?",
+        options: ["Fuel mixing only", "Lubrication and cooling", "Electrical conduction", "Pressure regulation"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Engine Systems"
+      },
+      {
+        text: "Which material is commonly used for aircraft control cables?",
+        options: ["Aluminum", "Steel", "Titanium", "Carbon fiber"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Flight Controls"
+      },
+      {
+        text: "What is the standard voltage for most aircraft electrical systems?",
+        options: ["12V DC", "24V DC", "28V DC", "115V AC"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Electrical Systems"
+      },
+      {
+        text: "In pneumatic systems, what provides pressurized air?",
+        options: ["Engine bleed air", "External compressor only", "Manual pump", "Hydraulic pump"],
+        correctAnswer: 0,
+        difficulty: "ML1",
+        category: "Pneumatic Systems"
+      },
+      {
+        text: "What is the primary purpose of aircraft wing flaps?",
+        options: ["Increase speed", "Reduce drag", "Increase lift at low speeds", "Improve fuel efficiency"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Flight Controls"
+      },
+      {
+        text: "Which instrument indicates engine RPM?",
+        options: ["Altimeter", "Tachometer", "Airspeed indicator", "Attitude indicator"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Engine Instruments"
+      },
+      {
+        text: "What type of fire extinguishing agent is commonly used in aircraft engine compartments?",
+        options: ["Water", "Foam", "Halon", "CO2"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Fire Protection"
+      },
+      {
+        text: "Which component protects electrical circuits from overcurrent?",
+        options: ["Relay", "Switch", "Circuit breaker", "Transformer"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Electrical Systems"
+      },
+      {
+        text: "What is the function of aircraft pitot tubes?",
+        options: ["Measure fuel flow", "Measure airspeed", "Measure temperature", "Measure altitude"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Pitot-Static Systems"
+      },
+      {
+        text: "In turbine engines, what is the hot section?",
+        options: ["Compressor area", "Combustion and turbine area", "Fan area", "Exhaust area only"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Engine Systems"
+      },
+      {
+        text: "Which system provides cabin pressurization in commercial aircraft?",
+        options: ["Hydraulic system", "Electrical system", "Pneumatic system", "Fuel system"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Environmental Systems"
+      },
+      {
+        text: "What is the primary function of aircraft rudder?",
+        options: ["Control pitch", "Control roll", "Control yaw", "Control thrust"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Flight Controls"
+      },
+      {
+        text: "Which type of bearing is commonly used in aircraft engines?",
+        options: ["Ball bearings only", "Roller bearings only", "Both ball and roller bearings", "Magnetic bearings"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Engine Systems"
+      },
+      {
+        text: "What does the term 'MEL' stand for in aviation maintenance?",
+        options: ["Maintenance Equipment List", "Minimum Equipment List", "Maximum Engine Load", "Manual Entry Log"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Regulations"
+      },
+      {
+        text: "Which component converts DC power to AC power in aircraft systems?",
+        options: ["Rectifier", "Inverter", "Transformer", "Generator"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Electrical Systems"
+      },
+      {
+        text: "What is the purpose of aircraft trim tabs?",
+        options: ["Increase speed", "Reduce control forces", "Improve visibility", "Enhance communication"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Flight Controls"
+      },
+      {
+        text: "In aircraft fuel systems, what prevents fuel tank explosions?",
+        options: ["Fuel pumps", "Inerting systems", "Fuel filters", "Pressure regulators"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Fuel Systems"
+      },
+      {
+        text: "Which instrument measures aircraft altitude?",
+        options: ["Airspeed indicator", "Altimeter", "Attitude indicator", "Heading indicator"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Flight Instruments"
+      },
+      {
+        text: "What type of maintenance requires aircraft to be removed from service?",
+        options: ["Line maintenance", "Heavy maintenance", "Routine maintenance", "Preventive maintenance"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Maintenance Types"
+      },
+      {
+        text: "Which component regulates hydraulic system pressure?",
+        options: ["Accumulator", "Filter", "Pressure regulator", "Reservoir"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Hydraulic Systems"
+      },
+      {
+        text: "What is the primary purpose of aircraft anti-ice systems?",
+        options: ["Improve fuel efficiency", "Prevent ice formation", "Reduce noise", "Enhance visibility"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Ice Protection"
+      },
+      {
+        text: "In gas turbine engines, what accelerates combustion gases?",
+        options: ["Compressor", "Combustor", "Turbine", "Nozzle"],
+        correctAnswer: 3,
+        difficulty: "ML1",
+        category: "Engine Systems"
+      },
+      {
+        text: "Which system provides power for aircraft operation on ground?",
+        options: ["APU", "Main engines only", "Battery only", "External power only"],
+        correctAnswer: 0,
+        difficulty: "ML1",
+        category: "Auxiliary Power"
+      },
+      {
+        text: "What is the function of aircraft spoilers?",
+        options: ["Increase lift", "Reduce lift and increase drag", "Improve fuel flow", "Enhance communication"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Flight Controls"
+      },
+      {
+        text: "Which material is commonly used for aircraft fuel lines?",
+        options: ["Plastic", "Aluminum", "Steel", "Copper"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Fuel Systems"
+      },
+      {
+        text: "What does 'AD' stand for in aviation maintenance?",
+        options: ["Aircraft Directive", "Airworthiness Directive", "Aviation Document", "Assembly Drawing"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Regulations"
+      },
+      {
+        text: "Which component stores electrical energy in aircraft systems?",
+        options: ["Generator", "Battery", "Inverter", "Transformer"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Electrical Systems"
+      },
+      {
+        text: "What is the primary function of aircraft elevator?",
+        options: ["Control yaw", "Control roll", "Control pitch", "Control thrust"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Flight Controls"
+      },
+      {
+        text: "In hydraulic systems, what prevents contamination?",
+        options: ["Pumps", "Filters", "Accumulators", "Reservoirs"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Hydraulic Systems"
+      },
+      {
+        text: "Which system controls aircraft cabin temperature?",
+        options: ["Fuel system", "Electrical system", "Environmental control system", "Hydraulic system"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Environmental Systems"
+      },
+      {
+        text: "What is the purpose of engine thrust reversers?",
+        options: ["Increase thrust", "Redirect thrust for braking", "Improve fuel efficiency", "Reduce noise"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Engine Systems"
+      },
+      {
+        text: "Which instrument indicates aircraft heading?",
+        options: ["Compass", "Altimeter", "Airspeed indicator", "Attitude indicator"],
+        correctAnswer: 0,
+        difficulty: "ML1",
+        category: "Flight Instruments"
+      },
+      {
+        text: "What type of inspection is performed between flights?",
+        options: ["A-check", "B-check", "C-check", "Pre-flight inspection"],
+        correctAnswer: 3,
+        difficulty: "ML1",
+        category: "Inspection Types"
+      },
+      {
+        text: "Which component controls fuel flow to the engine?",
+        options: ["Fuel pump", "Fuel filter", "Fuel control unit", "Fuel tank"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Fuel Systems"
+      },
+      {
+        text: "What is the primary purpose of aircraft navigation lights?",
+        options: ["Illuminate runway", "Indicate aircraft position and direction", "Improve fuel efficiency", "Enhance communication"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Lighting Systems"
+      },
+      {
+        text: "In pneumatic systems, what controls air pressure?",
+        options: ["Pressure regulator", "Air filter", "Compressor", "Bleed valve"],
+        correctAnswer: 0,
+        difficulty: "ML1",
+        category: "Pneumatic Systems"
+      },
+      {
+        text: "Which component provides backup power in case of generator failure?",
+        options: ["APU", "Battery", "External power", "Emergency generator"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Electrical Systems"
+      },
+      {
+        text: "What is the function of aircraft ailerons?",
+        options: ["Control pitch", "Control yaw", "Control roll", "Control thrust"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Flight Controls"
+      },
+      {
+        text: "Which system prevents wheel lockup during landing?",
+        options: ["Hydraulic system", "Anti-skid system", "Pneumatic system", "Electrical system"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Landing Gear"
+      },
+      {
+        text: "What is the primary purpose of aircraft fuel pumps?",
+        options: ["Cool fuel", "Filter fuel", "Transfer and pressurize fuel", "Heat fuel"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Fuel Systems"
+      },
+      {
+        text: "Which document contains aircraft maintenance procedures?",
+        options: ["Flight manual", "Maintenance manual", "Operations manual", "Emergency manual"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Documentation"
+      },
+      {
+        text: "What type of valve controls hydraulic flow direction?",
+        options: ["Check valve", "Relief valve", "Selector valve", "Shutoff valve"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Hydraulic Systems"
+      },
+      {
+        text: "Which component measures engine exhaust gas temperature?",
+        options: ["Thermocouple", "Pressure sensor", "Flow meter", "Tachometer"],
+        correctAnswer: 0,
+        difficulty: "ML1",
+        category: "Engine Instruments"
+      },
+      {
+        text: "What is the primary function of aircraft wing slats?",
+        options: ["Reduce drag", "Improve airflow at high angles of attack", "Increase speed", "Enhance fuel efficiency"],
+        correctAnswer: 1,
+        difficulty: "ML1",
+        category: "Flight Controls"
+      },
+      {
+        text: "Which system provides emergency lighting in aircraft?",
+        options: ["Main electrical system", "Battery system", "Emergency lighting system", "APU system"],
+        correctAnswer: 2,
+        difficulty: "ML1",
+        category: "Emergency Systems"
+      }
+    ];
+
+    // Add all ML1 questions to storage
+    ml1Questions.forEach(question => {
+      const id = randomUUID();
+      const q: Question = { ...question, id };
+      this.questions.set(id, q);
+    });
   }
 }
 
