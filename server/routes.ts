@@ -13,6 +13,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ session, sessionKey });
     } catch (error) {
       console.error("Error creating exam session:", error);
+      
+      // Handle Zod validation errors specifically
+      if (error && typeof error === 'object' && 'issues' in error) {
+        const zodError = error as any;
+        const firstIssue = zodError.issues?.[0];
+        if (firstIssue) {
+          const message = `${firstIssue.path.join('.')}: ${firstIssue.message}`;
+          return res.status(400).json({ error: message });
+        }
+      }
+      
       if (error instanceof Error) {
         res.status(400).json({ error: error.message });
       } else {
