@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -9,6 +9,9 @@ import Admin from "@/pages/admin";
 import ExamIntro from "@/pages/exam-intro";
 import Examination from "@/pages/examination";
 import Results from "@/pages/results";
+import AdminLogin from "@/pages/admin-login";
+import AdminQuestions from "@/pages/admin-questions";
+import AdminQuestionForm from "@/pages/admin-question-form";
 import { Plane } from "lucide-react";
 
 function Header() {
@@ -34,6 +37,10 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/admin" component={Admin} />
+      <Route path="/admin-login" component={AdminLogin} />
+      <Route path="/admin/questions" component={AdminQuestions} />
+      <Route path="/admin/questions/new" component={AdminQuestionForm} />
+      <Route path="/admin/questions/:id/edit" component={AdminQuestionForm} />
       <Route path="/exam-intro/:sessionKey" component={ExamIntro} />
       <Route path="/examination/:sessionKey" component={Examination} />
       <Route path="/results/:sessionKey" component={Results} />

@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type ExamSession, type InsertExamSession, type Question, type InsertQuestion, type ExamResult, type ContinueExam } from "@shared/schema";
+import { type User, type InsertUser, type ExamSession, type InsertExamSession, type Question, type InsertQuestion, type UpdateQuestion, type ExamResult, type ContinueExam } from "@shared/schema";
 import { randomUUID } from "crypto";
 
 export interface IStorage {
@@ -12,7 +12,11 @@ export interface IStorage {
   findExamSessionByCredentials(lastName: string, password: string): Promise<ExamSession | undefined>;
   
   getQuestionsByDifficulty(difficulty: string): Promise<Question[]>;
+  getAllQuestions(): Promise<Question[]>;
+  getQuestionById(id: string): Promise<Question | undefined>;
   createQuestion(question: InsertQuestion): Promise<Question>;
+  updateQuestion(id: string, updates: UpdateQuestion): Promise<Question | undefined>;
+  deleteQuestion(id: string): Promise<boolean>;
   
   createExamResult(result: Omit<ExamResult, 'id'>): Promise<ExamResult>;
 }
@@ -218,11 +222,39 @@ export class MemStorage implements IStorage {
     return Array.from(this.questions.values()).filter(q => q.difficulty === difficulty);
   }
 
+  async getAllQuestions(): Promise<Question[]> {
+    return Array.from(this.questions.values()).sort((a, b) => {
+      // Sort by difficulty first, then by category
+      if (a.difficulty !== b.difficulty) {
+        const difficulties = ["ML0", "ML1", "ML2", "ML3", "ML4"];
+        return difficulties.indexOf(a.difficulty) - difficulties.indexOf(b.difficulty);
+      }
+      return a.category.localeCompare(b.category);
+    });
+  }
+
+  async getQuestionById(id: string): Promise<Question | undefined> {
+    return this.questions.get(id);
+  }
+
   async createQuestion(question: InsertQuestion): Promise<Question> {
     const id = randomUUID();
     const q: Question = { ...question, id };
     this.questions.set(id, q);
     return q;
+  }
+
+  async updateQuestion(id: string, updates: UpdateQuestion): Promise<Question | undefined> {
+    const existing = this.questions.get(id);
+    if (!existing) return undefined;
+    
+    const updated: Question = { ...existing, ...updates };
+    this.questions.set(id, updated);
+    return updated;
+  }
+
+  async deleteQuestion(id: string): Promise<boolean> {
+    return this.questions.delete(id);
   }
 
   async createExamResult(result: Omit<ExamResult, 'id'>): Promise<ExamResult> {

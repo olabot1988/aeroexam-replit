@@ -4,6 +4,8 @@
 
 This is a digital aviation maintenance examination platform designed to replace traditional hand-written annual examinations for aviation mechanics. The application provides a secure, timed testing environment that ensures regulatory compliance while offering a streamlined user experience. The system supports multiple maintenance levels (ML0-ML4), different exam types (Annual, Technical Inspector, CDR Progression), and maintains comprehensive tracking of exam sessions and results.
 
+**New Feature:** The platform now includes an admin panel for question management, allowing authorized users to create, edit, and delete exam questions across all maintenance levels and categories.
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
@@ -59,3 +61,24 @@ Preferred communication style: Simple, everyday language.
 **Session-Based Exam Flow**: Designed around exam sessions rather than user accounts, allowing for anonymous testing with secure session management.
 
 **Real-time Exam Features**: Includes countdown timers, progress tracking, question flagging, and automatic submission to meet regulatory examination requirements.
+
+**Admin Question Management**: Separate admin interface with authentication for managing exam questions, including CRUD operations with filtering and search capabilities.
+
+### Recent Changes (August 13, 2025)
+
+**Admin Panel Implementation**: Added comprehensive question management system with the following features:
+- Admin authentication (demo credentials: admin/admin123)
+- Question listing with search and filtering by difficulty level and category
+- Create new questions with multiple choice options (2-4 choices)
+- Edit existing questions with form validation
+- Delete questions with confirmation dialogs
+- Visual indicators for correct answers and difficulty levels
+- Professional admin interface matching aviation theme
+
+**New Routes Added**:
+- `/admin-login` - Admin authentication
+- `/admin/questions` - Question management dashboard
+- `/admin/questions/new` - Create new question
+- `/admin/questions/:id/edit` - Edit existing question
+
+**Enhanced Storage Interface**: Extended storage layer to support question CRUD operations including getAllQuestions, getQuestionById, updateQuestion, and deleteQuestion methods.

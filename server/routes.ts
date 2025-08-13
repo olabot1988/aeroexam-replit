@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertExamSessionSchema, answerSubmissionSchema, continueExamSchema } from "@shared/schema";
+import { insertExamSessionSchema, answerSubmissionSchema, continueExamSchema, insertQuestionSchema, updateQuestionSchema, adminLoginSchema } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   
@@ -240,6 +240,92 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
 
     res.json({ session });
+  });
+
+  // Admin authentication (simplified - in production use proper auth)
+  app.post("/api/admin/login", async (req, res) => {
+    try {
+      const { username, password } = adminLoginSchema.parse(req.body);
+      
+      // Simple hardcoded admin credentials (in production, use proper auth)
+      if (username === "admin" && password === "admin123") {
+        res.json({ success: true, token: "admin-token" });
+      } else {
+        res.status(401).json({ error: "Invalid credentials" });
+      }
+    } catch (error) {
+      res.status(400).json({ error: "Invalid request" });
+    }
+  });
+
+  // Get all questions (admin only)
+  app.get("/api/admin/questions", async (req, res) => {
+    try {
+      const questions = await storage.getAllQuestions();
+      res.json(questions);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch questions" });
+    }
+  });
+
+  // Get question by ID (admin only)
+  app.get("/api/admin/questions/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const question = await storage.getQuestionById(id);
+      
+      if (!question) {
+        return res.status(404).json({ error: "Question not found" });
+      }
+      
+      res.json(question);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch question" });
+    }
+  });
+
+  // Create new question (admin only)
+  app.post("/api/admin/questions", async (req, res) => {
+    try {
+      const questionData = insertQuestionSchema.parse(req.body);
+      const question = await storage.createQuestion(questionData);
+      res.json(question);
+    } catch (error) {
+      res.status(400).json({ error: "Invalid question data" });
+    }
+  });
+
+  // Update question (admin only)
+  app.put("/api/admin/questions/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const updates = updateQuestionSchema.parse(req.body);
+      const question = await storage.updateQuestion(id, updates);
+      
+      if (!question) {
+        return res.status(404).json({ error: "Question not found" });
+      }
+      
+      res.json(question);
+    } catch (error) {
+      res.status(400).json({ error: "Invalid update data" });
+    }
+  });
+
+  // Delete question (admin only)
+  app.delete("/api/admin/questions/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const deleted = await storage.deleteQuestion(id);
+      
+      if (!deleted) {
+        return res.status(404).json({ error: "Question not found" });
+      }
+      
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete question" });
+    }
   });
 
   const httpServer = createServer(app);

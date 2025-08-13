@@ -68,6 +68,19 @@ export const insertQuestionSchema = createInsertSchema(questions, {
   options: z.array(z.string()).min(2).max(4),
   correctAnswer: z.number().min(0).max(3),
   difficulty: z.enum(["ML0", "ML1", "ML2", "ML3", "ML4"]),
+}).pick({
+  text: true,
+  options: true,
+  correctAnswer: true,
+  difficulty: true,
+  category: true,
+});
+
+export const updateQuestionSchema = insertQuestionSchema.partial();
+
+export const adminLoginSchema = z.object({
+  username: z.string().min(1, "Username is required"),
+  password: z.string().min(1, "Password is required"),
 });
 
 export const answerSubmissionSchema = z.object({
@@ -86,7 +99,9 @@ export type User = typeof users.$inferSelect;
 export type InsertExamSession = z.infer<typeof insertExamSessionSchema>;
 export type ExamSession = typeof examSessions.$inferSelect;
 export type InsertQuestion = z.infer<typeof insertQuestionSchema>;
+export type UpdateQuestion = z.infer<typeof updateQuestionSchema>;
 export type Question = typeof questions.$inferSelect;
 export type ExamResult = typeof examResults.$inferSelect;
 export type AnswerSubmission = z.infer<typeof answerSubmissionSchema>;
 export type ContinueExam = z.infer<typeof continueExamSchema>;
+export type AdminLogin = z.infer<typeof adminLoginSchema>;

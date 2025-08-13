@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ClipboardCheck, Clock, Percent, HelpCircle, Info } from "lucide-react";
+import { ClipboardCheck, Clock, Percent, HelpCircle, Info, Settings } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function Home() {
@@ -45,8 +45,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Begin Test Button */}
-          <div className="pt-6">
+          {/* Action Buttons */}
+          <div className="pt-6 space-y-4">
             <Button 
               onClick={() => setLocation("/admin")}
               className="bg-aviation-blue hover:bg-aviation-blue-dark text-white font-semibold py-4 px-12 rounded-lg text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
@@ -55,6 +55,17 @@ export default function Home() {
               <ClipboardCheck className="mr-3" />
               Begin Test
             </Button>
+            
+            <div className="pt-2">
+              <Button 
+                variant="outline"
+                onClick={() => setLocation("/admin-login")}
+                className="text-professional-gray hover:text-aviation-blue border-gray-300 hover:border-aviation-blue"
+              >
+                <Settings className="mr-2 h-4 w-4" />
+                Admin Access
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>
