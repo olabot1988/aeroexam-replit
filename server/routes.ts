@@ -12,7 +12,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const { session, sessionKey } = await storage.createExamSession(sessionData);
       res.json({ session, sessionKey });
     } catch (error) {
-      res.status(400).json({ error: "Invalid session data" });
+      console.error("Error creating exam session:", error);
+      if (error instanceof Error) {
+        res.status(400).json({ error: error.message });
+      } else {
+        res.status(400).json({ error: "Invalid session data" });
+      }
     }
   });
 
@@ -28,7 +33,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       res.json({ session, sessionKey: session.sessionKey });
     } catch (error) {
-      res.status(400).json({ error: "Invalid credentials" });
+      console.error("Error continuing exam:", error);
+      if (error instanceof Error) {
+        res.status(400).json({ error: error.message });
+      } else {
+        res.status(400).json({ error: "Invalid credentials" });
+      }
     }
   });
 

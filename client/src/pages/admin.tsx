@@ -74,9 +74,26 @@ export default function Admin() {
       setLocation(`/exam-intro/${data.sessionKey}`);
     },
     onError: (error) => {
+      // Clean up error message to remove any special characters or JSON formatting
+      let cleanMessage = error.message;
+      try {
+        // Try to extract just the error text if it's formatted strangely
+        if (cleanMessage.includes('{') && cleanMessage.includes('}')) {
+          const match = cleanMessage.match(/"error":\s*"([^"]+)"/);
+          if (match) {
+            cleanMessage = match[1];
+          }
+        }
+        // Remove any status codes from the beginning
+        cleanMessage = cleanMessage.replace(/^\d+:\s*/, '');
+      } catch {
+        // If parsing fails, use a fallback message
+        cleanMessage = "Registration failed. Please check your information and try again.";
+      }
+      
       toast({
         title: "Registration Failed",
-        description: error.message,
+        description: cleanMessage,
         variant: "destructive",
       });
     },
@@ -95,9 +112,26 @@ export default function Admin() {
       setLocation(`/examination/${data.sessionKey}`);
     },
     onError: (error) => {
+      // Clean up error message to remove any special characters or JSON formatting
+      let cleanMessage = error.message;
+      try {
+        // Try to extract just the error text if it's formatted strangely
+        if (cleanMessage.includes('{') && cleanMessage.includes('}')) {
+          const match = cleanMessage.match(/"error":\s*"([^"]+)"/);
+          if (match) {
+            cleanMessage = match[1];
+          }
+        }
+        // Remove any status codes from the beginning
+        cleanMessage = cleanMessage.replace(/^\d+:\s*/, '');
+      } catch {
+        // If parsing fails, use a fallback message
+        cleanMessage = "No active exam found with those credentials.";
+      }
+      
       toast({
         title: "Session Not Found",
-        description: "No active exam found with those credentials.",
+        description: cleanMessage,
         variant: "destructive",
       });
     },
