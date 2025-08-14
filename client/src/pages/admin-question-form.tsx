@@ -50,7 +50,7 @@ export default function AdminQuestionForm() {
     },
   });
 
-  const { fields, append, remove } = useFieldArray<FormData, "options", "id">({
+  const { fields, append, remove } = useFieldArray({
     control: form.control,
     name: "options",
   });
@@ -302,21 +302,35 @@ export default function AdminQuestionForm() {
                   return (
                     <div key={field.id} className="flex items-center space-x-3">
                       <div className="flex items-center space-x-2">
-                        <input
-                          type="radio"
-                          {...form.register("correctAnswer", { valueAsNumber: true })}
-                          value={index}
-                          className="text-aviation-blue focus:ring-aviation-blue"
+                        <FormField
+                          control={form.control}
+                          name="correctAnswer"
+                          render={({ field: radioField }) => (
+                            <input
+                              type="radio"
+                              name="correctAnswer"
+                              value={index}
+                              checked={radioField.value === index}
+                              onChange={() => radioField.onChange(index)}
+                              className="text-aviation-blue focus:ring-aviation-blue"
+                            />
+                          )}
                         />
                         <span className="font-medium text-professional-gray-dark">
                           {letter}.
                         </span>
                       </div>
                       <div className="flex-1">
-                        <Input
-                          {...form.register(`options.${index}`)}
-                          placeholder={`Option ${letter}`}
-                          className="focus:ring-aviation-blue focus:border-aviation-blue"
+                        <FormField
+                          control={form.control}
+                          name={`options.${index}`}
+                          render={({ field: optionField }) => (
+                            <Input
+                              {...optionField}
+                              placeholder={`Option ${letter}`}
+                              className="focus:ring-aviation-blue focus:border-aviation-blue"
+                            />
+                          )}
                         />
                       </div>
                       {fields.length > 2 && (
