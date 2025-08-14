@@ -78,7 +78,7 @@ export default function Home() {
             <div className="text-left">
               <h3 className="font-semibold text-professional-gray-dark mb-2">Regulatory Compliance Notice</h3>
               <p className="text-sm text-professional-gray leading-relaxed">
-                This examination is conducted in accordance with FAA regulations. 
+                This examination is conducted in accordance with TC 3-04.71. 
                 All responses are recorded for compliance purposes. Ensure you have 
                 adequate time and a distraction-free environment before beginning.
               </p>

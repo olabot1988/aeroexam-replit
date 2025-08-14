@@ -1,5 +1,8 @@
 import { type User, type InsertUser, type ExamSession, type InsertExamSession, type Question, type InsertQuestion, type UpdateQuestion, type ExamResult, type ContinueExam } from "@shared/schema";
 import { randomUUID } from "crypto";
+import { db } from "./db";
+import { users, examSessions, questions, examResults } from "@shared/schema";
+import { eq, and } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -627,4 +630,104 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// Database storage implementation
+export class DatabaseStorage implements IStorage {
+  async getUser(id: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
+    return user;
+  }
+
+  async createExamSession(session: InsertExamSession): Promise<{ session: ExamSession; sessionKey: string }> {
+    const sessionKey = randomUUID();
+    const [createdSession] = await db
+      .insert(examSessions)
+      .values({
+        ...session,
+        sessionKey,
+      })
+      .returning();
+    return { session: createdSession, sessionKey };
+  }
+
+  async getExamSessionByKey(sessionKey: string): Promise<ExamSession | undefined> {
+    const [session] = await db.select().from(examSessions).where(eq(examSessions.sessionKey, sessionKey));
+    return session || undefined;
+  }
+
+  async updateExamSession(sessionKey: string, updates: Partial<ExamSession>): Promise<ExamSession | undefined> {
+    const [updated] = await db
+      .update(examSessions)
+      .set(updates)
+      .where(eq(examSessions.sessionKey, sessionKey))
+      .returning();
+    return updated || undefined;
+  }
+
+  async findExamSessionByCredentials(lastName: string, password: string): Promise<ExamSession | undefined> {
+    const [session] = await db
+      .select()
+      .from(examSessions)
+      .where(and(eq(examSessions.lastName, lastName), eq(examSessions.password, password)));
+    return session || undefined;
+  }
+
+  async getQuestionsByDifficulty(difficulty: string): Promise<Question[]> {
+    const results = await db.select().from(questions).where(eq(questions.difficulty, difficulty));
+    return results;
+  }
+
+  async getAllQuestions(): Promise<Question[]> {
+    const results = await db.select().from(questions);
+    return results;
+  }
+
+  async getQuestionById(id: string): Promise<Question | undefined> {
+    const [question] = await db.select().from(questions).where(eq(questions.id, id));
+    return question || undefined;
+  }
+
+  async createQuestion(question: InsertQuestion): Promise<Question> {
+    const [created] = await db
+      .insert(questions)
+      .values(question)
+      .returning();
+    return created;
+  }
+
+  async updateQuestion(id: string, updates: UpdateQuestion): Promise<Question | undefined> {
+    const [updated] = await db
+      .update(questions)
+      .set(updates)
+      .where(eq(questions.id, id))
+      .returning();
+    return updated || undefined;
+  }
+
+  async deleteQuestion(id: string): Promise<boolean> {
+    const result = await db.delete(questions).where(eq(questions.id, id));
+    return (result.rowCount ?? 0) > 0;
+  }
+
+  async createExamResult(result: Omit<ExamResult, 'id'>): Promise<ExamResult> {
+    const [created] = await db
+      .insert(examResults)
+      .values(result)
+      .returning();
+    return created;
+  }
+}
+
+export const storage = new DatabaseStorage();
