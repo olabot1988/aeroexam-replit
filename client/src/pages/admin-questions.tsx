@@ -165,9 +165,9 @@ export default function AdminQuestions() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Categories</SelectItem>
-                {categories.map((category: string) => (
-                  <SelectItem key={category} value={category}>
-                    {category}
+                {categories.map((category) => (
+                  <SelectItem key={String(category)} value={String(category)}>
+                    {String(category)}
                   </SelectItem>
                 ))}
               </SelectContent>

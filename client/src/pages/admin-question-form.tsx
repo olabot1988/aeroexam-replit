@@ -50,9 +50,9 @@ export default function AdminQuestionForm() {
     },
   });
 
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove } = useFieldArray<FormData, "options", "id">({
     control: form.control,
-    name: "options" as const,
+    name: "options",
   });
 
   // Load existing question if editing
@@ -123,9 +123,11 @@ export default function AdminQuestionForm() {
     },
   });
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     console.log("Form submitted with data:", data);
     console.log("Form errors:", form.formState.errors);
+    console.log("Is editing:", isEditing);
+    console.log("Question ID:", id);
     
     // Filter out empty options
     const filteredOptions = data.options.filter(option => option.trim() !== "");
@@ -155,7 +157,13 @@ export default function AdminQuestionForm() {
     };
     
     console.log("Submitting cleaned data:", submissionData);
-    createQuestionMutation.mutate(submissionData);
+    
+    try {
+      await createQuestionMutation.mutateAsync(submissionData);
+    } catch (error) {
+      console.error("Mutation failed:", error);
+      // The error will be handled by the mutation's onError callback
+    }
   };
 
   const addOption = () => {
