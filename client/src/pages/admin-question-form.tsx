@@ -45,14 +45,14 @@ export default function AdminQuestionForm() {
       text: "",
       options: ["", ""],
       correctAnswer: 0,
-      difficulty: "ML0",
+      difficulty: "ML0" as const,
       category: "",
     },
   });
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
-    name: "options",
+    name: "options" as const,
   });
 
   // Load existing question if editing

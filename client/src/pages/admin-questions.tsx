@@ -76,7 +76,7 @@ export default function AdminQuestions() {
   });
 
   // Get unique categories
-  const categories = [...new Set(questions.map((q: Question) => q.category))];
+  const categories = Array.from(new Set(questions.map((q: Question) => q.category)));
 
   const getDifficultyColor = (difficulty: string) => {
     const colors = {
@@ -165,7 +165,7 @@ export default function AdminQuestions() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Categories</SelectItem>
-                {categories.map((category) => (
+                {categories.map((category: string) => (
                   <SelectItem key={category} value={category}>
                     {category}
                   </SelectItem>
