@@ -346,16 +346,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.put("/api/admin/questions/:id", async (req, res) => {
     try {
       const { id } = req.params;
+      console.log("Updating question", id, "with data:", req.body);
       const updates = updateQuestionSchema.parse(req.body);
       const question = await storage.updateQuestion(id, updates);
       
       if (!question) {
+        console.log("Question not found:", id);
         return res.status(404).json({ error: "Question not found" });
       }
       
+      console.log("Question updated successfully:", question);
       res.json(question);
     } catch (error) {
-      res.status(400).json({ error: "Invalid update data" });
+      console.error("Error updating question:", error);
+      
+      // Handle Zod validation errors specifically
+      if (error && typeof error === 'object' && 'issues' in error) {
+        const zodError = error as any;
+        const firstIssue = zodError.issues?.[0];
+        if (firstIssue) {
+          const message = `${firstIssue.path.join('.')}: ${firstIssue.message}`;
+          return res.status(400).json({ error: message });
+        }
+      }
+      
+      if (error instanceof Error) {
+        res.status(400).json({ error: error.message });
+      } else {
+        res.status(400).json({ error: "Invalid update data" });
+      }
     }
   });
 

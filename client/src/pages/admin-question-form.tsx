@@ -82,8 +82,11 @@ export default function AdminQuestionForm() {
     mutationFn: async (data: FormData) => {
       const url = isEditing ? `/api/admin/questions/${id}` : "/api/admin/questions";
       const method = isEditing ? "PUT" : "POST";
+      console.log(`Making ${method} request to ${url} with data:`, data);
       const response = await apiRequest(method, url, data);
-      return response.json();
+      const result = await response.json();
+      console.log(`${method} response:`, result);
+      return result;
     },
     onSuccess: () => {
       toast({
