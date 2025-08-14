@@ -94,16 +94,65 @@ export default function AdminQuestionForm() {
       setLocation("/admin/questions");
     },
     onError: (error) => {
+      // Clean up error message to remove any special characters or JSON formatting
+      let cleanMessage = error.message;
+      try {
+        // Try to extract just the error text if it's formatted strangely
+        if (cleanMessage.includes('{') && cleanMessage.includes('}')) {
+          const match = cleanMessage.match(/"error":\s*"([^"]+)"/);
+          if (match) {
+            cleanMessage = match[1];
+          }
+        }
+        // Remove any status codes from the beginning
+        cleanMessage = cleanMessage.replace(/^\d+:\s*/, '');
+      } catch {
+        // If parsing fails, use a fallback message
+        cleanMessage = isEditing ? "Failed to update question. Please check your information and try again." : "Failed to create question. Please check your information and try again.";
+      }
+      
+      console.error("Question mutation error:", error);
       toast({
         title: isEditing ? "Update Failed" : "Creation Failed",
-        description: error.message,
+        description: cleanMessage,
         variant: "destructive",
       });
     },
   });
 
   const onSubmit = (data: FormData) => {
-    createQuestionMutation.mutate(data);
+    console.log("Form submitted with data:", data);
+    console.log("Form errors:", form.formState.errors);
+    
+    // Filter out empty options
+    const filteredOptions = data.options.filter(option => option.trim() !== "");
+    
+    if (filteredOptions.length < 2) {
+      toast({
+        title: "Validation Error",
+        description: "At least 2 answer options are required",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    if (data.correctAnswer >= filteredOptions.length) {
+      toast({
+        title: "Validation Error", 
+        description: "Please select a valid correct answer",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    const submissionData = {
+      ...data,
+      options: filteredOptions,
+      correctAnswer: Math.min(data.correctAnswer, filteredOptions.length - 1)
+    };
+    
+    console.log("Submitting cleaned data:", submissionData);
+    createQuestionMutation.mutate(submissionData);
   };
 
   const addOption = () => {
