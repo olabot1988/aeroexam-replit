@@ -32,7 +32,7 @@ export const questions = pgTable("questions", {
   text: text("text").notNull(),
   options: jsonb("options").notNull(),
   correctAnswer: integer("correct_answer").notNull(),
-  difficulty: text("difficulty").notNull(), // ML0, ML1, ML2, ML3, ML4
+  difficulties: jsonb("difficulties").notNull(), // Array of ML levels: ["ML1", "ML2", "ML3"]
   category: text("category").notNull(),
 });
 
@@ -67,12 +67,12 @@ export const insertExamSessionSchema = createInsertSchema(examSessions, {
 export const insertQuestionSchema = createInsertSchema(questions, {
   options: z.array(z.string()).min(2).max(4),
   correctAnswer: z.number().min(0).max(3),
-  difficulty: z.enum(["ML0", "ML1", "ML2", "ML3", "ML4"]),
+  difficulties: z.array(z.enum(["ML0", "ML1", "ML2", "ML3", "ML4"])).min(1, "At least one difficulty level is required"),
 }).pick({
   text: true,
   options: true,
   correctAnswer: true,
-  difficulty: true,
+  difficulties: true,
   category: true,
 });
 

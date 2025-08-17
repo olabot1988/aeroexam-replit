@@ -69,7 +69,11 @@ export default function AdminQuestions() {
   const filteredQuestions = questions.filter((q: Question) => {
     const matchesSearch = q.text.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          q.category.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesDifficulty = filterDifficulty === "all" || q.difficulty === filterDifficulty;
+    
+    // Check if question matches difficulty filter (supports both old and new schema)
+    const questionDifficulties = Array.isArray(q.difficulties) ? q.difficulties : [q.difficulty].filter(Boolean);
+    const matchesDifficulty = filterDifficulty === "all" || questionDifficulties.includes(filterDifficulty);
+    
     const matchesCategory = filterCategory === "all" || q.category === filterCategory;
     
     return matchesSearch && matchesDifficulty && matchesCategory;
@@ -206,10 +210,15 @@ export default function AdminQuestions() {
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-3">
-                      <Badge className={getDifficultyColor(question.difficulty)}>
-                        {question.difficulty}
-                      </Badge>
+                    <div className="flex items-center space-x-3 mb-3 flex-wrap">
+                      {/* Multiple difficulty badges */}
+                      <div className="flex flex-wrap gap-1">
+                        {(Array.isArray(question.difficulties) ? question.difficulties : [question.difficulty]).filter(Boolean).map((diff: string) => (
+                          <Badge key={diff} className={getDifficultyColor(diff)}>
+                            {diff}
+                          </Badge>
+                        ))}
+                      </div>
                       <Badge variant="outline">
                         {question.category}
                       </Badge>

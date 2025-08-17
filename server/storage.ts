@@ -685,8 +685,12 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getQuestionsByDifficulty(difficulty: string): Promise<Question[]> {
-    const results = await db.select().from(questions).where(eq(questions.difficulty, difficulty));
-    return results;
+    const results = await db.select().from(questions);
+    // Filter questions that include the specified difficulty level
+    return results.filter(q => {
+      const difficulties = Array.isArray(q.difficulties) ? q.difficulties : [];
+      return difficulties.includes(difficulty);
+    });
   }
 
   async getAllQuestions(): Promise<Question[]> {

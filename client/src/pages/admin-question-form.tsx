@@ -21,6 +21,7 @@ const formSchema = insertQuestionSchema.extend({
   options: z.array(z.string().min(1, "Option cannot be empty")).min(2, "At least 2 options required").max(4, "Maximum 4 options allowed"),
   correctAnswer: z.number().min(0).max(3),
   category: z.string().min(1, "Category is required"),
+  difficulties: z.array(z.enum(["ML0", "ML1", "ML2", "ML3", "ML4"])).min(1, "At least one difficulty level is required"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -45,7 +46,7 @@ export default function AdminQuestionForm() {
       text: "",
       options: ["", ""],
       correctAnswer: 0,
-      difficulty: "ML0" as const,
+      difficulties: [],
       category: "",
     },
   });
@@ -72,7 +73,7 @@ export default function AdminQuestionForm() {
         text: existingQuestion.text,
         options: existingQuestion.options,
         correctAnswer: existingQuestion.correctAnswer,
-        difficulty: existingQuestion.difficulty,
+        difficulties: existingQuestion.difficulties || [],
         category: existingQuestion.category,
       });
     }
@@ -230,34 +231,53 @@ export default function AdminQuestionForm() {
                 )}
               />
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-4">
+                {/* Difficulty Levels - Multiple Selection */}
                 <FormField
                   control={form.control}
-                  name="difficulty"
+                  name="difficulties"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-professional-gray-dark">
-                        Difficulty Level <span className="text-red-500">*</span>
+                        Difficulty Levels <span className="text-red-500">*</span>
                       </FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger className="focus:ring-aviation-blue focus:border-aviation-blue">
-                            <SelectValue placeholder="Select difficulty" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="ML0">ML0 - Basic Maintenance</SelectItem>
-                          <SelectItem value="ML1">ML1 - Line Maintenance</SelectItem>
-                          <SelectItem value="ML2">ML2 - Heavy Maintenance</SelectItem>
-                          <SelectItem value="ML3">ML3 - Specialized Systems</SelectItem>
-                          <SelectItem value="ML4">ML4 - Advanced Systems</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        {[
+                          { value: "ML0", label: "ML0 - Basic Maintenance" },
+                          { value: "ML1", label: "ML1 - Line Maintenance" },
+                          { value: "ML2", label: "ML2 - Heavy Maintenance" },
+                          { value: "ML3", label: "ML3 - Specialized Systems" },
+                          { value: "ML4", label: "ML4 - Advanced Systems" },
+                        ].map((difficulty) => (
+                          <div key={difficulty.value} className="flex items-center space-x-2">
+                            <input
+                              type="checkbox"
+                              id={difficulty.value}
+                              checked={field.value.includes(difficulty.value)}
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  field.onChange([...field.value, difficulty.value]);
+                                } else {
+                                  field.onChange(field.value.filter((v: string) => v !== difficulty.value));
+                                }
+                              }}
+                              className="rounded border-gray-300 text-aviation-blue focus:ring-aviation-blue"
+                            />
+                            <label
+                              htmlFor={difficulty.value}
+                              className="text-sm text-professional-gray-dark cursor-pointer"
+                            >
+                              {difficulty.label}
+                            </label>
+                          </div>
+                        ))}
+                      </div>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
 
+                {/* Category */}
                 <FormField
                   control={form.control}
                   name="category"
