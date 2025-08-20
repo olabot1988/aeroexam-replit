@@ -334,11 +334,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Create new question (admin only)
   app.post("/api/admin/questions", async (req, res) => {
     try {
+      console.log("Creating question with data:", req.body);
       const questionData = insertQuestionSchema.parse(req.body);
+      console.log("Parsed question data:", questionData);
       const question = await storage.createQuestion(questionData);
+      console.log("Created question:", question);
       res.json(question);
     } catch (error) {
-      res.status(400).json({ error: "Invalid question data" });
+      console.error("Error creating question:", error);
+      
+      // Handle Zod validation errors specifically
+      if (error && typeof error === 'object' && 'issues' in error) {
+        const zodError = error as any;
+        const firstIssue = zodError.issues?.[0];
+        if (firstIssue) {
+          const message = `${firstIssue.path.join('.')}: ${firstIssue.message}`;
+          return res.status(400).json({ error: message });
+        }
+      }
+      
+      if (error instanceof Error) {
+        res.status(400).json({ error: error.message });
+      } else {
+        res.status(400).json({ error: "Invalid question data" });
+      }
     }
   });
 
