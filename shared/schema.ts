@@ -32,6 +32,7 @@ export const questions = pgTable("questions", {
   text: text("text").notNull(),
   options: jsonb("options").notNull(),
   correctAnswer: integer("correct_answer").notNull(),
+  difficulty: text("difficulty"), // Legacy column, now nullable
   difficulties: jsonb("difficulties").notNull(), // Array of ML levels: ["ML1", "ML2", "ML3"]
   category: text("category").notNull(),
 });
