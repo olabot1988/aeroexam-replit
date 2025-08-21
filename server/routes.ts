@@ -278,20 +278,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const { sessionKey } = req.params;
     const session = await storage.getExamSessionByKey(sessionKey);
     
-    console.log("Getting results for session:", sessionKey);
-    console.log("Session data:", session);
-    
     if (!session) {
-      console.log("Session not found");
       return res.status(404).json({ error: "Session not found" });
     }
 
     if (!session.completed) {
-      console.log("Exam not completed, session.completed:", session.completed);
       return res.status(400).json({ error: "Exam not completed" });
     }
 
-    console.log("Returning session results:", session);
     res.json({ session });
   });
 

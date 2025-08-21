@@ -14,10 +14,6 @@ export default function Results() {
     enabled: !!sessionKey,
   });
 
-  console.log("Results page - sessionKey:", sessionKey);
-  console.log("Results page - sessionData:", sessionData);
-  console.log("Results page - error:", error);
-
   // Extract session from the response
   const session = sessionData?.session;
 

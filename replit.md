@@ -64,7 +64,14 @@ Preferred communication style: Simple, everyday language.
 
 **Admin Question Management**: Separate admin interface with authentication for managing exam questions, including CRUD operations with filtering and search capabilities.
 
-### Recent Changes (August 13, 2025)
+### Recent Changes (August 21, 2025)
+
+**Multiple Difficulty Level Support**: Successfully implemented the ability to assign questions to multiple ML difficulty levels:
+- Updated database schema from single `difficulty` field to `difficulties` array
+- Modified question creation forms to use checkboxes for multiple ML level selection
+- Enhanced question display to show multiple difficulty badges
+- Maintained backward compatibility with existing questions
+- Fixed database constraint issues during migration
 
 **Admin Panel Implementation**: Added comprehensive question management system with the following features:
 - Admin authentication (demo credentials: admin/admin123)
@@ -74,6 +81,11 @@ Preferred communication style: Simple, everyday language.
 - Delete questions with confirmation dialogs
 - Visual indicators for correct answers and difficulty levels
 - Professional admin interface matching aviation theme
+
+**Results Page Fix**: Resolved issue where exam results were not displaying properly:
+- Fixed data structure mismatch between API response and frontend expectations
+- Improved error handling and data extraction
+- Exam results now display correctly with pass/fail status and detailed scores
 
 **New Routes Added**:
 - `/admin-login` - Admin authentication
