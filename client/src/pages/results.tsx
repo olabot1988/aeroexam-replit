@@ -9,10 +9,17 @@ export default function Results() {
   const { sessionKey } = useParams();
   const [, setLocation] = useLocation();
 
-  const { data: session, isLoading } = useQuery({
+  const { data: sessionData, isLoading, error } = useQuery({
     queryKey: ["/api/exam", sessionKey, "results"],
     enabled: !!sessionKey,
   });
+
+  console.log("Results page - sessionKey:", sessionKey);
+  console.log("Results page - sessionData:", sessionData);
+  console.log("Results page - error:", error);
+
+  // Extract session from the response
+  const session = sessionData?.session;
 
   const handlePrint = () => {
     window.print();
