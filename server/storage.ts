@@ -223,7 +223,14 @@ export class MemStorage implements IStorage {
   }
 
   async getQuestionsByDifficulty(difficulty: string): Promise<Question[]> {
-    return Array.from(this.questions.values()).filter(q => q.difficulty === difficulty);
+    return Array.from(this.questions.values()).filter(q => {
+      // Support both old single difficulty and new difficulties array
+      if (q.difficulties && Array.isArray(q.difficulties)) {
+        return q.difficulties.includes(difficulty);
+      }
+      // Fallback to old difficulty field for backward compatibility
+      return q.difficulty === difficulty;
+    });
   }
 
   async getAllQuestions(): Promise<Question[]> {
