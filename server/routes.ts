@@ -89,8 +89,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const allQuestions = await storage.getQuestionsByDifficulty(difficulty);
-      const shuffledQuestions = allQuestions.sort(() => Math.random() - 0.5);
-      const examQuestions = shuffledQuestions.slice(0, 50);
+      const examQuestions = allQuestions.slice(0, 50);
       
       return res.json({
         session,
@@ -115,9 +114,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     // Get questions for the appropriate difficulty
     const allQuestions = await storage.getQuestionsByDifficulty(difficulty);
     
-    // Shuffle and select 50 questions
-    const shuffledQuestions = allQuestions.sort(() => Math.random() - 0.5);
-    const examQuestions = shuffledQuestions.slice(0, 50);
+    // Select first 50 questions
+    const examQuestions = allQuestions.slice(0, 50);
 
     // Update session with start time
     const updatedSession = await storage.updateExamSession(sessionKey, {
