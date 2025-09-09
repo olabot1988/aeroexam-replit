@@ -9,13 +9,14 @@ export default function Results() {
   const { sessionKey } = useParams();
   const [, setLocation] = useLocation();
 
-  const { data: sessionData, isLoading, error } = useQuery({
+  const { data: resultsData, isLoading, error } = useQuery({
     queryKey: ["/api/exam", sessionKey, "results"],
     enabled: !!sessionKey,
   });
 
-  // Extract session from the response
-  const session = sessionData?.session;
+  // Extract session and question results from the response
+  const session = resultsData?.session;
+  const questionResults = resultsData?.questionResults || [];
 
   const handlePrint = () => {
     window.print();
@@ -204,6 +205,105 @@ export default function Results() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Detailed Question Review */}
+      {questionResults && questionResults.length > 0 && (
+        <Card className="bg-white rounded-xl shadow-lg border border-gray-200">
+          <CardContent className="p-8">
+            <h3 className="text-2xl font-bold text-professional-gray-dark mb-6">
+              Question-by-Question Review
+            </h3>
+            <div className="space-y-6">
+              {questionResults.map((result: any, index: number) => (
+                <div 
+                  key={index}
+                  className={`border rounded-lg p-6 ${
+                    result.isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
+                  }`}
+                  data-testid={`question-result-${result.questionNumber}`}
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-lg font-semibold text-professional-gray-dark">
+                        Question {result.questionNumber}
+                      </span>
+                      <div className={`flex items-center space-x-1 px-3 py-1 rounded-full ${
+                        result.isCorrect 
+                          ? 'bg-green-100 text-green-700'
+                          : 'bg-red-100 text-red-700'
+                      }`}>
+                        {result.isCorrect ? (
+                          <Check className="h-4 w-4" />
+                        ) : (
+                          <X className="h-4 w-4" />
+                        )}
+                        <span className="text-sm font-medium">
+                          {result.isCorrect ? 'Correct' : 'Incorrect'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <p className="text-professional-gray-dark font-medium mb-3">
+                      {result.question.text}
+                    </p>
+                    
+                    <div className="space-y-2">
+                      {result.question.options.map((option: string, optionIndex: number) => {
+                        const isUserAnswer = result.userAnswer === optionIndex;
+                        const isCorrectAnswer = result.question.correctAnswer === optionIndex;
+                        
+                        return (
+                          <div 
+                            key={optionIndex}
+                            className={`flex items-center space-x-3 p-3 rounded-lg border ${
+                              isCorrectAnswer 
+                                ? 'border-green-300 bg-green-100'
+                                : isUserAnswer && !isCorrectAnswer
+                                  ? 'border-red-300 bg-red-100'
+                                  : 'border-gray-200 bg-gray-50'
+                            }`}
+                          >
+                            <span className="text-sm font-medium text-professional-gray-dark">
+                              {String.fromCharCode(65 + optionIndex)}.
+                            </span>
+                            <span className="text-professional-gray-dark flex-1">
+                              {option}
+                            </span>
+                            <div className="flex items-center space-x-2">
+                              {isCorrectAnswer && (
+                                <span className="text-xs bg-green-200 text-green-700 px-2 py-1 rounded">
+                                  Correct Answer
+                                </span>
+                              )}
+                              {isUserAnswer && (
+                                <span className={`text-xs px-2 py-1 rounded ${
+                                  isCorrectAnswer 
+                                    ? 'bg-green-200 text-green-700'
+                                    : 'bg-red-200 text-red-700'
+                                }`}>
+                                  Your Answer
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  
+                  {result.userAnswer === undefined && (
+                    <div className="text-orange-600 text-sm font-medium">
+                      No answer selected
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Compliance Footer */}
       <Card className="bg-gray-100 rounded-lg p-6 border border-gray-200">
