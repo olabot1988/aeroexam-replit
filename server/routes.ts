@@ -210,7 +210,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
 
     const questions = await storage.getQuestionsByDifficulty(difficulty);
-    const examQuestions = questions.sort(() => Math.random() - 0.5).slice(0, 50);
+    const examQuestions = questions.slice(0, 50);
     
     // Calculate score
     const answers = session.answers as Record<string, number>;
