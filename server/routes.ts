@@ -284,7 +284,45 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(400).json({ error: "Exam not completed" });
     }
 
-    res.json({ session });
+    // Get the questions used in this exam (same logic as during exam creation)
+    let difficulty = session.maintenanceLevel;
+    if (session.examType === "CDR Progression Written Exam") {
+      const levels = ["ML0", "ML1", "ML2", "ML3", "ML4"];
+      const currentIndex = levels.indexOf(session.maintenanceLevel);
+      if (currentIndex < levels.length - 1) {
+        difficulty = levels[currentIndex + 1];
+      }
+    } else if (session.examType === "Technical Inspector Exam") {
+      difficulty = "ML3";
+    }
+
+    const allQuestions = await storage.getQuestionsByDifficulty(difficulty);
+    const examQuestions = allQuestions.slice(0, 50);
+
+    // Calculate detailed results for each question
+    const answers = session.answers as Record<string, number> || {};
+    const questionResults = examQuestions.map((question, index) => {
+      const questionNumber = index + 1;
+      const userAnswer = answers[questionNumber.toString()];
+      const isCorrect = userAnswer === question.correctAnswer;
+      
+      return {
+        questionNumber,
+        question: {
+          text: question.text,
+          options: question.options,
+          correctAnswer: question.correctAnswer
+        },
+        userAnswer,
+        isCorrect
+      };
+    });
+
+    res.json({ 
+      session,
+      questionResults,
+      totalQuestions: 50
+    });
   });
 
   // Admin authentication (simplified - in production use proper auth)
