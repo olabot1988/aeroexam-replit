@@ -230,6 +230,12 @@ export class MemStorage implements IStorage {
       }
       // Fallback to old difficulty field for backward compatibility
       return q.difficulty === difficulty;
+    }).sort((a, b) => {
+      // Sort by category first, then by question text for consistent ordering
+      if (a.category !== b.category) {
+        return a.category.localeCompare(b.category);
+      }
+      return a.text.localeCompare(b.text);
     });
   }
 
@@ -697,6 +703,12 @@ export class DatabaseStorage implements IStorage {
     return results.filter(q => {
       const difficulties = Array.isArray(q.difficulties) ? q.difficulties : [];
       return difficulties.includes(difficulty);
+    }).sort((a, b) => {
+      // Sort by category first, then by question text for consistent ordering
+      if (a.category !== b.category) {
+        return a.category.localeCompare(b.category);
+      }
+      return a.text.localeCompare(b.text);
     });
   }
 
