@@ -2,7 +2,7 @@ import { type User, type InsertUser, type ExamSession, type InsertExamSession, t
 import { randomUUID } from "crypto";
 import { db } from "./db";
 import { users, examSessions, questions, examResults } from "@shared/schema";
-import { eq, and } from "drizzle-orm";
+import { eq, and, lt } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -13,6 +13,7 @@ export interface IStorage {
   getExamSessionByKey(sessionKey: string): Promise<ExamSession | undefined>;
   updateExamSession(sessionKey: string, updates: Partial<ExamSession>): Promise<ExamSession | undefined>;
   findExamSessionByCredentials(lastName: string, password: string): Promise<ExamSession | undefined>;
+  cleanupOldExamSessions(): Promise<number>;
   
   getQuestionsByDifficulty(difficulty: string): Promise<Question[]>;
   getAllQuestions(): Promise<Question[]>;
@@ -220,6 +221,28 @@ export class MemStorage implements IStorage {
                  session.password === password && 
                  !session.completed
     );
+  }
+
+  async cleanupOldExamSessions(): Promise<number> {
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    
+    let deletedCount = 0;
+    const sessionsToDelete: string[] = [];
+    
+    for (const [key, session] of this.examSessions.entries()) {
+      // Only delete uncompleted sessions older than 7 days
+      if (!session.completed && session.createdAt && new Date(session.createdAt) < sevenDaysAgo) {
+        sessionsToDelete.push(key);
+      }
+    }
+    
+    sessionsToDelete.forEach(key => {
+      this.examSessions.delete(key);
+      deletedCount++;
+    });
+    
+    return deletedCount;
   }
 
   async getQuestionsByDifficulty(difficulty: string): Promise<Question[]> {
@@ -695,6 +718,20 @@ export class DatabaseStorage implements IStorage {
       .from(examSessions)
       .where(and(eq(examSessions.lastName, lastName), eq(examSessions.password, password)));
     return session || undefined;
+  }
+
+  async cleanupOldExamSessions(): Promise<number> {
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    
+    const result = await db
+      .delete(examSessions)
+      .where(and(
+        eq(examSessions.completed, false),
+        lt(examSessions.createdAt, sevenDaysAgo)
+      ));
+    
+    return result.rowCount || 0;
   }
 
   async getQuestionsByDifficulty(difficulty: string): Promise<Question[]> {

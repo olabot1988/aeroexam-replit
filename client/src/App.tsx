@@ -21,10 +21,12 @@ function Header() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
             <Plane className="text-aviation-blue text-2xl" />
-            <h1 className="text-xl font-semibold text-professional-gray-dark">Aviation Maintenance Examination</h1>
+            <h1 className="text-xl font-semibold text-professional-gray-dark">
+              Aviation Maintenance Examination
+            </h1>
           </div>
           <div className="text-sm text-professional-gray-light">
-            FAA Regulatory Compliance Platform
+            Army Regulatory Compliance Platform
           </div>
         </div>
       </div>
