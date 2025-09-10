@@ -51,7 +51,7 @@ export default function AdminQuestionForm() {
     },
   });
 
-  const { fields, append, remove } = useFieldArray<FormData, "options">({
+  const { fields, append, remove } = useFieldArray({
     control: form.control,
     name: "options",
   });
