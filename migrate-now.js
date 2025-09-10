@@ -33,9 +33,16 @@ async function migrateQuestions() {
     console.log('📥 Copying questions to production...');
     for (const q of questions) {
       await prodDb(`
-        INSERT INTO questions (id, text, options, "correctAnswer", difficulties, category)
+        INSERT INTO questions (id, text, options, "correct_answer", difficulties, category)
         VALUES ($1, $2, $3, $4, $5, $6)
-      `, [q.id, q.text, q.options, q.correctAnswer, q.difficulties, q.category]);
+      `, [
+        q.id, 
+        q.text, 
+        JSON.stringify(q.options), 
+        q.correct_answer, 
+        JSON.stringify(q.difficulties), 
+        q.category
+      ]);
     }
 
     console.log('✅ Migration complete!');
