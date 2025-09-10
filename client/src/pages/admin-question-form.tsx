@@ -53,7 +53,7 @@ export default function AdminQuestionForm() {
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
-    name: "options",
+    name: "options" as const,
   });
 
   // Load existing question if editing
@@ -244,12 +244,12 @@ export default function AdminQuestionForm() {
                             <input
                               type="checkbox"
                               id={difficulty.value}
-                              checked={field.value.includes(difficulty.value)}
+                              checked={field.value.includes(difficulty.value as "ML0" | "ML1" | "ML2" | "ML3" | "ML4")}
                               onChange={(e) => {
                                 if (e.target.checked) {
-                                  field.onChange([...field.value, difficulty.value]);
+                                  field.onChange([...field.value, difficulty.value as "ML0" | "ML1" | "ML2" | "ML3" | "ML4"]);
                                 } else {
-                                  field.onChange(field.value.filter((v: string) => v !== difficulty.value));
+                                  field.onChange(field.value.filter((v) => v !== difficulty.value));
                                 }
                               }}
                               className="rounded border-gray-300 text-aviation-blue focus:ring-aviation-blue"
