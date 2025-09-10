@@ -83,10 +83,8 @@ export default function AdminQuestionForm() {
     mutationFn: async (data: FormData) => {
       const url = isEditing ? `/api/admin/questions/${id}` : "/api/admin/questions";
       const method = isEditing ? "PUT" : "POST";
-      console.log(`Making ${method} request to ${url} with data:`, data);
       const response = await apiRequest(method, url, data);
       const result = await response.json();
-      console.log(`${method} response:`, result);
       return result;
     },
     onSuccess: () => {
@@ -115,7 +113,6 @@ export default function AdminQuestionForm() {
         cleanMessage = isEditing ? "Failed to update question. Please check your information and try again." : "Failed to create question. Please check your information and try again.";
       }
       
-      console.error("Question mutation error:", error);
       toast({
         title: isEditing ? "Update Failed" : "Creation Failed",
         description: cleanMessage,
@@ -125,10 +122,6 @@ export default function AdminQuestionForm() {
   });
 
   const onSubmit = async (data: FormData) => {
-    console.log("Form submitted with data:", data);
-    console.log("Form errors:", form.formState.errors);
-    console.log("Is editing:", isEditing);
-    console.log("Question ID:", id);
     
     // Filter out empty options
     const filteredOptions = data.options.filter(option => option.trim() !== "");
@@ -157,12 +150,10 @@ export default function AdminQuestionForm() {
       correctAnswer: Math.min(data.correctAnswer, filteredOptions.length - 1)
     };
     
-    console.log("Submitting cleaned data:", submissionData);
     
     try {
       await createQuestionMutation.mutateAsync(submissionData);
     } catch (error) {
-      console.error("Mutation failed:", error);
       // The error will be handled by the mutation's onError callback
     }
   };

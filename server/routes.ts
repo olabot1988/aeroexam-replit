@@ -370,11 +370,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Create new question (admin only)
   app.post("/api/admin/questions", async (req, res) => {
     try {
-      console.log("Creating question with data:", req.body);
       const questionData = insertQuestionSchema.parse(req.body);
-      console.log("Parsed question data:", questionData);
       const question = await storage.createQuestion(questionData);
-      console.log("Created question:", question);
       res.json(question);
     } catch (error) {
       console.error("Error creating question:", error);
@@ -401,16 +398,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.put("/api/admin/questions/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      console.log("Updating question", id, "with data:", req.body);
       const updates = updateQuestionSchema.parse(req.body);
       const question = await storage.updateQuestion(id, updates);
       
       if (!question) {
-        console.log("Question not found:", id);
         return res.status(404).json({ error: "Question not found" });
       }
-      
-      console.log("Question updated successfully:", question);
       res.json(question);
     } catch (error) {
       console.error("Error updating question:", error);
