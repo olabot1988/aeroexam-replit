@@ -325,13 +325,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
-  // Admin authentication (simplified - in production use proper auth)
+  // Admin authentication
   app.post("/api/admin/login", async (req, res) => {
     try {
       const { username, password } = adminLoginSchema.parse(req.body);
       
-      // Simple hardcoded admin credentials (in production, use proper auth)
-      if (username === "admin" && password === "admin123") {
+      // Use environment variables for admin credentials
+      const adminUsername = process.env.ADMIN_USERNAME;
+      const adminPassword = process.env.ADMIN_PASSWORD;
+      
+      if (!adminUsername || !adminPassword) {
+        return res.status(500).json({ error: "Admin credentials not configured" });
+      }
+      
+      if (username === adminUsername && password === adminPassword) {
         res.json({ success: true, token: "admin-token" });
       } else {
         res.status(401).json({ error: "Invalid credentials" });
