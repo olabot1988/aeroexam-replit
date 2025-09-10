@@ -449,6 +449,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Manual cleanup endpoint (admin only)
+  app.post("/api/admin/cleanup", async (req, res) => {
+    try {
+      const deletedCount = await storage.cleanupOldExamSessions();
+      res.json({ 
+        success: true, 
+        deletedCount,
+        message: `Removed ${deletedCount} uncompleted exam sessions older than 7 days`
+      });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to perform cleanup" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
