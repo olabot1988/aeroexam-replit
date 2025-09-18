@@ -220,7 +220,8 @@ export default function Examination() {
   };
 
   const handleQuitExam = () => {
-    setLocation("/");
+    // Submit the exam to mark it as completed
+    submitExamMutation.mutate();
   };
 
   const formatTime = (seconds: number) => {
