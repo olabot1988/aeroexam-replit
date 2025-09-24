@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plus, Pencil, Trash2, Search, LogOut, BookOpen } from "lucide-react";
+import { Plus, Pencil, Trash2, Search, LogOut, BookOpen, Users } from "lucide-react";
 import { useLocation } from "wouter";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
@@ -121,13 +121,24 @@ export default function AdminQuestions() {
               <Button 
                 onClick={() => setLocation("/admin/questions/new")}
                 className="bg-aviation-blue hover:bg-aviation-blue-dark"
+                data-testid="button-add-question"
               >
                 <Plus className="mr-2 h-4 w-4" />
                 Add Question
               </Button>
               <Button 
+                onClick={() => setLocation("/admin/completed-exams")}
+                variant="outline"
+                className="border-aviation-blue text-aviation-blue hover:bg-aviation-blue hover:text-white"
+                data-testid="button-completed-exams"
+              >
+                <Users className="mr-2 h-4 w-4" />
+                Completed Exams
+              </Button>
+              <Button 
                 variant="outline"
                 onClick={handleLogout}
+                data-testid="button-logout"
               >
                 <LogOut className="mr-2 h-4 w-4" />
                 Logout
