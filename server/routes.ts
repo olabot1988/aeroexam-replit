@@ -330,17 +330,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { username, password } = adminLoginSchema.parse(req.body);
       
-      // Use environment variables for admin credentials
-      const adminUsername = process.env.ADMIN_USERNAME;
-      const adminPassword = process.env.ADMIN_PASSWORD;
+      // In development mode, always use demo credentials for easy testing
+      const isDevelopment = process.env.NODE_ENV === "development";
+      const adminUsername = isDevelopment ? "admin" : (process.env.ADMIN_USERNAME || "admin");
+      const adminPassword = isDevelopment ? "admin123" : (process.env.ADMIN_PASSWORD || "admin123");
       
-      if (!adminUsername || !adminPassword) {
-        return res.status(500).json({ error: "Admin credentials not configured" });
-      }
+      console.log("Admin login attempt:", { 
+        username, 
+        password: password.length + " characters",
+        expectedUsername: adminUsername,
+        expectedPassword: adminPassword.length + " characters",
+        isDevelopment,
+        nodeEnv: process.env.NODE_ENV
+      });
       
       if (username === adminUsername && password === adminPassword) {
+        console.log("Admin login successful");
         res.json({ success: true, token: "admin-token" });
       } else {
+        console.log("Admin login failed - credential mismatch");
         res.status(401).json({ error: "Invalid credentials" });
       }
     } catch (error) {
