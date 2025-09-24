@@ -2,7 +2,7 @@ import { type User, type InsertUser, type ExamSession, type InsertExamSession, t
 import { randomUUID } from "crypto";
 import { db } from "./db";
 import { users, examSessions, questions, examResults } from "@shared/schema";
-import { eq, and, lt } from "drizzle-orm";
+import { eq, and, lt, desc } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -23,6 +23,7 @@ export interface IStorage {
   deleteQuestion(id: string): Promise<boolean>;
   
   createExamResult(result: Omit<ExamResult, 'id'>): Promise<ExamResult>;
+  getAllCompletedExamSessions(): Promise<ExamSession[]>;
 }
 
 export class MemStorage implements IStorage {
@@ -302,6 +303,17 @@ export class MemStorage implements IStorage {
     const examResult: ExamResult = { ...result, id };
     this.examResults.set(id, examResult);
     return examResult;
+  }
+
+  async getAllCompletedExamSessions(): Promise<ExamSession[]> {
+    const sessions = Array.from(this.examSessions.values())
+      .filter(session => session.completed === true)
+      .sort((a, b) => {
+        const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+        const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+        return dateB - dateA; // Newest first
+      });
+    return sessions;
   }
   private initializeML1Questions() {
     const ml1Questions: InsertQuestion[] = [
@@ -787,6 +799,15 @@ export class DatabaseStorage implements IStorage {
       .values(result)
       .returning();
     return created;
+  }
+
+  async getAllCompletedExamSessions(): Promise<ExamSession[]> {
+    const sessions = await db
+      .select()
+      .from(examSessions)
+      .where(eq(examSessions.completed, true))
+      .orderBy(desc(examSessions.createdAt));
+    return sessions;
   }
 }
 

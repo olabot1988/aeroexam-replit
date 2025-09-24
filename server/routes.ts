@@ -463,6 +463,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get all completed exam sessions for admin review
+  app.get("/api/admin/completed-exams", async (req, res) => {
+    try {
+      const completedExams = await storage.getAllCompletedExamSessions();
+      res.json(completedExams);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch completed exams" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
