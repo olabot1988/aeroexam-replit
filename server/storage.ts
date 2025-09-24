@@ -24,6 +24,7 @@ export interface IStorage {
   
   createExamResult(result: Omit<ExamResult, 'id'>): Promise<ExamResult>;
   getAllCompletedExamSessions(): Promise<ExamSession[]>;
+  getExamSessionForReview(sessionKey: string): Promise<ExamSession | undefined>;
 }
 
 export class MemStorage implements IStorage {
@@ -314,6 +315,12 @@ export class MemStorage implements IStorage {
         return dateB - dateA; // Newest first
       });
     return sessions;
+  }
+
+  async getExamSessionForReview(sessionKey: string): Promise<ExamSession | undefined> {
+    const session = Array.from(this.examSessions.values())
+      .find(s => s.sessionKey === sessionKey && s.completed === true);
+    return session;
   }
   private initializeML1Questions() {
     const ml1Questions: InsertQuestion[] = [
@@ -808,6 +815,14 @@ export class DatabaseStorage implements IStorage {
       .where(eq(examSessions.completed, true))
       .orderBy(desc(examSessions.createdAt));
     return sessions;
+  }
+
+  async getExamSessionForReview(sessionKey: string): Promise<ExamSession | undefined> {
+    const [session] = await db
+      .select()
+      .from(examSessions)
+      .where(and(eq(examSessions.sessionKey, sessionKey), eq(examSessions.completed, true)));
+    return session || undefined;
   }
 }
 

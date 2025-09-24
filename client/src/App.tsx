@@ -13,6 +13,7 @@ import AdminLogin from "@/pages/admin-login";
 import AdminQuestions from "@/pages/admin-questions";
 import AdminQuestionForm from "@/pages/admin-question-form";
 import AdminCompletedExams from "@/pages/admin-completed-exams";
+import AdminExamReview from "@/pages/admin-exam-review";
 import { Plane } from "lucide-react";
 
 function Header() {
@@ -45,6 +46,7 @@ function Router() {
       <Route path="/admin/questions/new" component={AdminQuestionForm} />
       <Route path="/admin/questions/:id/edit" component={AdminQuestionForm} />
       <Route path="/admin/completed-exams" component={AdminCompletedExams} />
+      <Route path="/admin/exam-review/:sessionKey" component={AdminExamReview} />
       <Route path="/exam-intro/:sessionKey" component={ExamIntro} />
       <Route path="/examination/:sessionKey" component={Examination} />
       <Route path="/results/:sessionKey" component={Results} />

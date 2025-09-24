@@ -473,6 +473,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get detailed exam session for admin review
+  app.get("/api/admin/exam-review/:sessionKey", async (req, res) => {
+    try {
+      const { sessionKey } = req.params;
+      const examSession = await storage.getExamSessionForReview(sessionKey);
+      
+      if (!examSession) {
+        return res.status(404).json({ error: "Completed exam session not found" });
+      }
+
+      // Get all questions for the exam level
+      const questions = await storage.getQuestionsByDifficulty(examSession.maintenanceLevel);
+      
+      res.json({
+        examSession,
+        questions,
+        userAnswers: examSession.answers,
+        flaggedQuestions: examSession.flaggedQuestions
+      });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch exam review data" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
