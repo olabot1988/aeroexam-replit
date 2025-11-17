@@ -100,6 +100,23 @@ export default function AdminExamReview() {
   const { examSession, questions, userAnswers, flaggedQuestions } = reviewData;
   const PASSING_SCORE = 90;
   const passed = (examSession.score || 0) >= PASSING_SCORE;
+  
+  // Handle backward compatibility: old format uses question numbers, new format uses question IDs
+  const isOldFormat = Object.keys(userAnswers || {}).some(key => !isNaN(Number(key)));
+  const normalizedAnswers: Record<string, number> = {};
+  
+  if (isOldFormat) {
+    // Convert old format (question number to answer) to new format (question ID to answer)
+    Object.entries(userAnswers || {}).forEach(([questionNum, answer]) => {
+      const questionIndex = parseInt(questionNum) - 1;
+      if (questionIndex < questions.length) {
+        normalizedAnswers[questions[questionIndex].id] = answer;
+      }
+    });
+  } else {
+    // Already in new format
+    Object.assign(normalizedAnswers, userAnswers || {});
+  }
 
   // Calculate exam duration
   const examDuration = examSession.startTime && examSession.endTime
@@ -108,9 +125,9 @@ export default function AdminExamReview() {
 
   // Calculate question statistics
   const totalQuestions = questions.length;
-  const answeredQuestions = Object.keys(userAnswers || {}).length;
+  const answeredQuestions = Object.keys(normalizedAnswers).length;
   const correctAnswers = questions.filter(q => {
-    const userAnswer = userAnswers?.[q.id];
+    const userAnswer = normalizedAnswers[q.id];
     return userAnswer !== undefined && userAnswer === q.correctAnswer;
   }).length;
 
@@ -185,7 +202,7 @@ export default function AdminExamReview() {
         </h2>
 
         {questions.map((question, index) => {
-          const userAnswer = userAnswers?.[question.id];
+          const userAnswer = normalizedAnswers[question.id];
           const isCorrect = userAnswer !== undefined && userAnswer === question.correctAnswer;
           const isFlagged = flaggedQuestions?.[question.id] || false;
           const answerStatus = getAnswerStatus(question, userAnswer);
