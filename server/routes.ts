@@ -170,17 +170,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const questionIds = Array.isArray(session.questionIds) ? session.questionIds : [];
     const examQuestions = await storage.getQuestionsByIds(questionIds as string[]);
     
+    // Create a map of question ID to question for easy lookup
+    const questionMap = new Map(examQuestions.map(q => [q.id, q]));
+    
     // Calculate score
     const answers = session.answers as Record<string, number>;
     let correctCount = 0;
     
-    Object.entries(answers).forEach(([questionNum, answer]) => {
-      const questionIndex = parseInt(questionNum) - 1;
-      if (questionIndex < examQuestions.length) {
-        const question = examQuestions[questionIndex];
-        if (question.correctAnswer === answer) {
-          correctCount++;
-        }
+    Object.entries(answers).forEach(([questionId, answer]) => {
+      const question = questionMap.get(questionId);
+      if (question && question.correctAnswer === answer) {
+        correctCount++;
       }
     });
 
