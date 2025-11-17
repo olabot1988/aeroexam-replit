@@ -64,7 +64,17 @@ Preferred communication style: Simple, everyday language.
 
 **Admin Question Management**: Separate admin interface with authentication for managing exam questions, including CRUD operations with filtering and search capabilities.
 
-### Recent Changes (August 21, 2025)
+### Recent Changes (November 17, 2025)
+
+**Random Question Selection**: Implemented random question selection to prevent test memorization:
+- Created comprehensive question bank with 60 questions per maintenance level (300 total)
+- Each exam session randomly selects 50 questions from the 60 available for that ML level
+- Uses Fisher-Yates shuffle algorithm for uniform random distribution
+- Question selection is stored in exam session (questionIds field) for consistency throughout exam
+- Different exam sessions for the same ML level receive different question sets
+- All routes updated to use stored questionIds instead of dynamic selection
+
+### Previous Changes (August 21, 2025)
 
 **Multiple Difficulty Level Support**: Successfully implemented the ability to assign questions to multiple ML difficulty levels:
 - Updated database schema from single `difficulty` field to `difficulties` array
