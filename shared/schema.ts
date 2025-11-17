@@ -17,6 +17,7 @@ export const examSessions = pgTable("exam_sessions", {
   examType: text("exam_type").notNull(),
   password: text("password").notNull(),
   sessionKey: text("session_key").notNull().unique(),
+  questionIds: jsonb("question_ids").notNull(),
   currentQuestion: integer("current_question").default(1),
   answers: jsonb("answers").default({}),
   flaggedQuestions: jsonb("flagged_questions").default([]),

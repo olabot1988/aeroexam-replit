@@ -16,6 +16,7 @@ export interface IStorage {
   cleanupOldExamSessions(): Promise<number>;
   
   getQuestionsByDifficulty(difficulty: string): Promise<Question[]>;
+  getQuestionsByIds(ids: string[]): Promise<Question[]>;
   getAllQuestions(): Promise<Question[]>;
   getQuestionById(id: string): Promise<Question | undefined>;
   createQuestion(question: InsertQuestion): Promise<Question>;
@@ -187,10 +188,19 @@ export class MemStorage implements IStorage {
   async createExamSession(session: InsertExamSession): Promise<{ session: ExamSession; sessionKey: string }> {
     const id = randomUUID();
     const sessionKey = randomUUID();
+    
+    // Get all questions for the selected maintenance level
+    const availableQuestions = await this.getQuestionsByDifficulty(session.maintenanceLevel);
+    
+    // Randomly select 50 questions from the available pool
+    const selectedQuestions = this.randomlySelectQuestions(availableQuestions, 50);
+    const questionIds = selectedQuestions.map(q => q.id);
+    
     const examSession: ExamSession = {
       ...session,
       id,
       sessionKey,
+      questionIds,
       currentQuestion: 1,
       answers: {},
       flaggedQuestions: [],
@@ -202,6 +212,16 @@ export class MemStorage implements IStorage {
     };
     this.examSessions.set(sessionKey, examSession);
     return { session: examSession, sessionKey };
+  }
+  
+  private randomlySelectQuestions(questions: Question[], count: number): Question[] {
+    // Fisher-Yates shuffle algorithm
+    const shuffled = [...questions];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled.slice(0, Math.min(count, shuffled.length));
   }
 
   async getExamSessionByKey(sessionKey: string): Promise<ExamSession | undefined> {
@@ -262,6 +282,18 @@ export class MemStorage implements IStorage {
       }
       return a.text.localeCompare(b.text);
     });
+  }
+
+  async getQuestionsByIds(ids: string[]): Promise<Question[]> {
+    const questionsMap = new Map<string, Question>();
+    ids.forEach((id, index) => {
+      const question = this.questions.get(id);
+      if (question) {
+        questionsMap.set(id, question);
+      }
+    });
+    // Return questions in the same order as the input IDs
+    return ids.map(id => questionsMap.get(id)).filter(q => q !== undefined) as Question[];
   }
 
   async getAllQuestions(): Promise<Question[]> {
@@ -707,14 +739,33 @@ export class DatabaseStorage implements IStorage {
 
   async createExamSession(session: InsertExamSession): Promise<{ session: ExamSession; sessionKey: string }> {
     const sessionKey = randomUUID();
+    
+    // Get all questions for the selected maintenance level
+    const availableQuestions = await this.getQuestionsByDifficulty(session.maintenanceLevel);
+    
+    // Randomly select 50 questions from the available pool
+    const selectedQuestions = this.randomlySelectQuestions(availableQuestions, 50);
+    const questionIds = selectedQuestions.map(q => q.id);
+    
     const [createdSession] = await db
       .insert(examSessions)
       .values({
         ...session,
         sessionKey,
+        questionIds,
       })
       .returning();
     return { session: createdSession, sessionKey };
+  }
+  
+  private randomlySelectQuestions(questions: Question[], count: number): Question[] {
+    // Fisher-Yates shuffle algorithm
+    const shuffled = [...questions];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled.slice(0, Math.min(count, shuffled.length));
   }
 
   async getExamSessionByKey(sessionKey: string): Promise<ExamSession | undefined> {
@@ -766,6 +817,19 @@ export class DatabaseStorage implements IStorage {
       }
       return a.text.localeCompare(b.text);
     });
+  }
+
+  async getQuestionsByIds(ids: string[]): Promise<Question[]> {
+    if (ids.length === 0) return [];
+    
+    // Import inArray from drizzle-orm at top if not already imported
+    const { inArray } = await import("drizzle-orm");
+    
+    const results = await db.select().from(questions).where(inArray(questions.id, ids));
+    
+    // Return questions in the same order as the input IDs
+    const questionsMap = new Map(results.map(q => [q.id, q]));
+    return ids.map(id => questionsMap.get(id)).filter(q => q !== undefined) as Question[];
   }
 
   async getAllQuestions(): Promise<Question[]> {

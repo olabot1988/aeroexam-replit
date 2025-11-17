@@ -74,48 +74,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(404).json({ error: "Session not found" });
     }
 
-    // If exam already started, return the existing session data instead of error
-    if (session.startTime) {
-      // Get questions for the session
-      let difficulty = session.maintenanceLevel;
-      if (session.examType === "CDR Progression Written Exam") {
-        const levels = ["ML0", "ML1", "ML2", "ML3", "ML4"];
-        const currentIndex = levels.indexOf(session.maintenanceLevel);
-        if (currentIndex < levels.length - 1) {
-          difficulty = levels[currentIndex + 1];
-        }
-      } else if (session.examType === "Technical Inspector Exam") {
-        difficulty = "ML3";
-      }
+    // Get questions using the questionIds stored in the session
+    const questionIds = Array.isArray(session.questionIds) ? session.questionIds : [];
+    const examQuestions = await storage.getQuestionsByIds(questionIds as string[]);
 
-      const allQuestions = await storage.getQuestionsByDifficulty(difficulty);
-      const examQuestions = allQuestions.slice(0, 50);
-      
+    // If exam already started, return the existing session data
+    if (session.startTime) {
       return res.json({
         session,
         questions: examQuestions,
-        totalQuestions: 50
+        totalQuestions: examQuestions.length
       });
     }
-
-    // Determine difficulty level based on exam type and maintenance level
-    let difficulty = session.maintenanceLevel;
-    if (session.examType === "CDR Progression Written Exam") {
-      // CDR exams test for next higher level
-      const levels = ["ML0", "ML1", "ML2", "ML3", "ML4"];
-      const currentIndex = levels.indexOf(session.maintenanceLevel);
-      if (currentIndex < levels.length - 1) {
-        difficulty = levels[currentIndex + 1];
-      }
-    } else if (session.examType === "Technical Inspector Exam") {
-      difficulty = "ML3";
-    }
-
-    // Get questions for the appropriate difficulty
-    const allQuestions = await storage.getQuestionsByDifficulty(difficulty);
-    
-    // Select first 50 questions
-    const examQuestions = allQuestions.slice(0, 50);
 
     // Update session with start time
     const updatedSession = await storage.updateExamSession(sessionKey, {
@@ -125,7 +95,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ 
       session: updatedSession, 
       questions: examQuestions,
-      totalQuestions: 50
+      totalQuestions: examQuestions.length
     });
   });
 
@@ -197,20 +167,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Exam already completed" });
       }
 
-    // Get questions to calculate score
-    let difficulty = session.maintenanceLevel;
-    if (session.examType === "CDR Progression Written Exam") {
-      const levels = ["ML0", "ML1", "ML2", "ML3", "ML4"];
-      const currentIndex = levels.indexOf(session.maintenanceLevel);
-      if (currentIndex < levels.length - 1) {
-        difficulty = levels[currentIndex + 1];
-      }
-    } else if (session.examType === "Technical Inspector Exam") {
-      difficulty = "ML3";
-    }
-
-    const questions = await storage.getQuestionsByDifficulty(difficulty);
-    const examQuestions = questions.slice(0, 50);
+    // Get questions using the questionIds stored in the session
+    const questionIds = Array.isArray(session.questionIds) ? session.questionIds : [];
+    const examQuestions = await storage.getQuestionsByIds(questionIds as string[]);
     
     // Calculate score
     const answers = session.answers as Record<string, number>;
@@ -284,19 +243,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(400).json({ error: "Exam not completed" });
     }
 
-    // Get the questions used in this exam (same logic as during exam creation)
-    let difficulty = session.maintenanceLevel;
-    if (session.examType === "CDR Progression Written Exam") {
-      const levels = ["ML0", "ML1", "ML2", "ML3", "ML4"];
-      const currentIndex = levels.indexOf(session.maintenanceLevel);
-      if (currentIndex < levels.length - 1) {
-        difficulty = levels[currentIndex + 1];
-      }
-    } else if (session.examType === "Technical Inspector Exam") {
-      difficulty = "ML3";
-    }
-
-    const allQuestions = await storage.getQuestionsByDifficulty(difficulty);
+    // Get the questions used in this exam using the stored questionIds
+    const questionIds = Array.isArray(session.questionIds) ? session.questionIds : [];
+    const allQuestions = await storage.getQuestionsByIds(questionIds as string[]);
     const examQuestions = allQuestions.slice(0, 50);
 
     // Calculate detailed results for each question
@@ -491,8 +440,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ error: "Completed exam session not found" });
       }
 
-      // Get all questions for the exam level
-      const questions = await storage.getQuestionsByDifficulty(examSession.maintenanceLevel);
+      // Get questions using the questionIds stored in the session
+      const questionIds = Array.isArray(examSession.questionIds) ? examSession.questionIds : [];
+      const questions = await storage.getQuestionsByIds(questionIds as string[]);
       
       res.json({
         examSession,
