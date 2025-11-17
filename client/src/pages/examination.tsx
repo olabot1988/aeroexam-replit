@@ -22,7 +22,7 @@ export default function Examination() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [timeLeft, setTimeLeft] = useState(28800); // 8 hours in seconds
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [answers, setAnswers] = useState<Record<string, number>>({});
   const [flaggedQuestions, setFlaggedQuestions] = useState<number[]>([]);
   const [examInitialized, setExamInitialized] = useState(false);
 
@@ -76,9 +76,9 @@ export default function Examination() {
 
   // Submit answer
   const submitAnswerMutation = useMutation({
-    mutationFn: async ({ questionNumber, answer }: { questionNumber: number; answer: number }) => {
+    mutationFn: async ({ questionId, answer }: { questionId: string; answer: number }) => {
       const response = await apiRequest("POST", `/api/exam/${sessionKey}/answer`, {
-        questionNumber,
+        questionId,
         answer,
       });
       return response.json();
@@ -166,14 +166,20 @@ export default function Examination() {
 
   // Load selected answer when question changes
   useEffect(() => {
-    setSelectedAnswer(answers[currentQuestion] ?? null);
-  }, [currentQuestion, answers]);
+    const currentQuestionData = questions[currentQuestion - 1];
+    if (currentQuestionData) {
+      setSelectedAnswer(answers[currentQuestionData.id] ?? null);
+    }
+  }, [currentQuestion, answers, questions]);
 
   const handleAnswerSelect = (answer: number) => {
     setSelectedAnswer(answer);
-    const newAnswers = { ...answers, [currentQuestion]: answer };
+    const currentQuestionData = questions[currentQuestion - 1];
+    if (!currentQuestionData) return;
+    
+    const newAnswers = { ...answers, [currentQuestionData.id]: answer };
     setAnswers(newAnswers);
-    submitAnswerMutation.mutate({ questionNumber: currentQuestion, answer });
+    submitAnswerMutation.mutate({ questionId: currentQuestionData.id, answer });
   };
 
   const handleNext = () => {

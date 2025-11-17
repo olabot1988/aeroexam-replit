@@ -87,7 +87,7 @@ export const adminLoginSchema = z.object({
 
 export const answerSubmissionSchema = z.object({
   sessionKey: z.string(),
-  questionNumber: z.number(),
+  questionId: z.string(),
   answer: z.number(),
 });
 

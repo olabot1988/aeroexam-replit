@@ -103,7 +103,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/exam/:sessionKey/answer", async (req, res) => {
     try {
       const { sessionKey } = req.params;
-      const { questionNumber, answer } = answerSubmissionSchema.parse({
+      const { questionId, answer } = answerSubmissionSchema.parse({
         sessionKey,
         ...req.body
       });
@@ -118,10 +118,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       // Update answers
-      const answers = { ...session.answers as Record<string, number>, [questionNumber]: answer };
+      const answers = { ...session.answers as Record<string, number>, [questionId]: answer };
       const updatedSession = await storage.updateExamSession(sessionKey, {
-        answers,
-        currentQuestion: Math.max(session.currentQuestion || 1, questionNumber)
+        answers
       });
 
       res.json(updatedSession);
