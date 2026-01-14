@@ -1,0 +1,2807 @@
+AVIATION MAINTENANCE EXAMINATION - QUESTION BANK
+============================================================
+Exported from Development Database
+Date: 1/14/2026
+Total Questions: 300
+============================================================
+
+
+------------------------------------------------------------
+CATEGORY: ACN
+------------------------------------------------------------
+
+Question #1
+Difficulty Level(s): ML4
+Q: ACN feeder file updates must be performed from which workcenter?
+
+   A. Supply
+   B. Admin
+   C. Quality Control
+   D. Production Control [CORRECT]
+
+Question #2
+Difficulty Level(s): ML4
+Q: During a gearbox removal, the assigned technical inspector created a remove DA 2410 and listed the inspection action code as Unserviceable. Which ACN function allows the technical inspector the opportunity to change the inspection action code from Unserviceable to Serviceable?
+
+   A. Use the Forms button on the DA 2410 to change the code
+   B. Submit a help desk ticket to the 2410 hotline
+   C. Submit a trouble ticket to the ACN helpdesk
+   D. Use the DA 2410 "Enable" button to change the code [CORRECT]
+
+
+------------------------------------------------------------
+CATEGORY: AIRCRAFT SYSTEMS
+------------------------------------------------------------
+
+Question #3
+Difficulty Level(s): ML0
+Q: ML0 Aircraft Systems Q13: What is the primary purpose of aircraft systems?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #4
+Difficulty Level(s): ML0
+Q: ML0 Aircraft Systems Q30: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #5
+Difficulty Level(s): ML0
+Q: ML0 Aircraft Systems Q47: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #6
+Difficulty Level(s): ML1
+Q: ML1 Aircraft Systems Q13: What is the operating range for aircraft systems?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #7
+Difficulty Level(s): ML1
+Q: ML1 Aircraft Systems Q30: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #8
+Difficulty Level(s): ML1
+Q: ML1 Aircraft Systems Q47: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #9
+Difficulty Level(s): ML2
+Q: ML2 Aircraft Systems Q13: In advanced aircraft systems, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #10
+Difficulty Level(s): ML2
+Q: ML2 Aircraft Systems Q30: What parameter indicates system malfunction in aircraft systems?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #11
+Difficulty Level(s): ML2
+Q: ML2 Aircraft Systems Q47: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #12
+Difficulty Level(s): ML3
+Q: ML3 Aircraft Systems Q13: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #13
+Difficulty Level(s): ML3
+Q: ML3 Aircraft Systems Q30: What diagnostic system monitors aircraft systems?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #14
+Difficulty Level(s): ML3
+Q: ML3 Aircraft Systems Q47: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #15
+Difficulty Level(s): ML4
+Q: ML4 Aircraft Systems Q13: What AI system optimizes flight envelope protection?
+
+   A. Manual calculation
+   B. Machine learning based optimization [CORRECT]
+   C. Simple algorithm
+   D. Lookup table
+
+Question #16
+Difficulty Level(s): ML4
+Q: ML4 Aircraft Systems Q30: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+Question #17
+Difficulty Level(s): ML4
+Q: ML4 Aircraft Systems Q47: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+
+------------------------------------------------------------
+CATEGORY: DOCUMENTATION
+------------------------------------------------------------
+
+Question #18
+Difficulty Level(s): ML0
+Q: ML0 Documentation Q4: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #19
+Difficulty Level(s): ML0
+Q: ML0 Documentation Q21: What is the primary purpose of documentation?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #20
+Difficulty Level(s): ML0
+Q: ML0 Documentation Q38: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #21
+Difficulty Level(s): ML0
+Q: ML0 Documentation Q55: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #22
+Difficulty Level(s): ML1
+Q: ML1 Documentation Q4: What is the purpose of documentation component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #23
+Difficulty Level(s): ML1
+Q: ML1 Documentation Q21: What is the operating range for documentation?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #24
+Difficulty Level(s): ML1
+Q: ML1 Documentation Q38: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #25
+Difficulty Level(s): ML1
+Q: ML1 Documentation Q55: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #26
+Difficulty Level(s): ML2
+Q: ML2 Documentation Q4: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #27
+Difficulty Level(s): ML2
+Q: ML2 Documentation Q21: In advanced documentation, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #28
+Difficulty Level(s): ML2
+Q: ML2 Documentation Q38: What parameter indicates system malfunction in documentation?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #29
+Difficulty Level(s): ML2
+Q: ML2 Documentation Q55: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #30
+Difficulty Level(s): ML3
+Q: What measure has a direct effect on a unit's ability to regenerate combat power through repair services?
+
+   A. unit OPTEMPO
+   B. manpower available 
+   C. TMDE delinquency  [CORRECT]
+
+Question #31
+Difficulty Level(s): ML3
+Q: ML3 Documentation Q21: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #32
+Difficulty Level(s): ML3
+Q: ML3 Documentation Q38: What diagnostic system monitors documentation?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #33
+Difficulty Level(s): ML3
+Q: ML3 Documentation Q55: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #34
+Difficulty Level(s): ML4
+Q: ML4 Documentation Q4: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+Question #35
+Difficulty Level(s): ML4
+Q: ML4 Documentation Q21: What AI system optimizes flight envelope protection?
+
+   A. Manual calculation
+   B. Machine learning based optimization [CORRECT]
+   C. Simple algorithm
+   D. Lookup table
+
+Question #36
+Difficulty Level(s): ML4
+Q: ML4 Documentation Q38: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+Question #37
+Difficulty Level(s): ML4
+Q: ML4 Documentation Q55: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+
+------------------------------------------------------------
+CATEGORY: ELECTRICAL SYSTEMS
+------------------------------------------------------------
+
+Question #38
+Difficulty Level(s): ML0
+Q: ML0 Electrical Systems Q7: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #39
+Difficulty Level(s): ML0
+Q: ML0 Electrical Systems Q24: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #40
+Difficulty Level(s): ML0
+Q: ML0 Electrical Systems Q41: What is the primary purpose of electrical systems?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #41
+Difficulty Level(s): ML0
+Q: ML0 Electrical Systems Q58: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #42
+Difficulty Level(s): ML1
+Q: ML1 Electrical Systems Q7: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #43
+Difficulty Level(s): ML1
+Q: ML1 Electrical Systems Q24: What is the purpose of electrical systems component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #44
+Difficulty Level(s): ML1
+Q: ML1 Electrical Systems Q41: What is the operating range for electrical systems?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #45
+Difficulty Level(s): ML1
+Q: ML1 Electrical Systems Q58: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #46
+Difficulty Level(s): ML2
+Q: ML2 Electrical Systems Q7: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #47
+Difficulty Level(s): ML2
+Q: ML2 Electrical Systems Q24: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #48
+Difficulty Level(s): ML2
+Q: ML2 Electrical Systems Q41: In advanced electrical systems, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #49
+Difficulty Level(s): ML2
+Q: ML2 Electrical Systems Q58: What parameter indicates system malfunction in electrical systems?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #50
+Difficulty Level(s): ML3
+Q: ML3 Electrical Systems Q7: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #51
+Difficulty Level(s): ML3
+Q: ML3 Electrical Systems Q24: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #52
+Difficulty Level(s): ML3
+Q: ML3 Electrical Systems Q41: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #53
+Difficulty Level(s): ML3
+Q: ML3 Electrical Systems Q58: What diagnostic system monitors electrical systems?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #54
+Difficulty Level(s): ML4
+Q: ML4 Electrical Systems Q7: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+Question #55
+Difficulty Level(s): ML4
+Q: ML4 Electrical Systems Q24: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+Question #56
+Difficulty Level(s): ML4
+Q: ML4 Electrical Systems Q41: What AI system optimizes flight envelope protection?
+
+   A. Manual calculation
+   B. Machine learning based optimization [CORRECT]
+   C. Simple algorithm
+   D. Lookup table
+
+Question #57
+Difficulty Level(s): ML4
+Q: ML4 Electrical Systems Q58: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+
+------------------------------------------------------------
+CATEGORY: FUEL SYSTEMS
+------------------------------------------------------------
+
+Question #58
+Difficulty Level(s): ML0
+Q: ML0 Fuel Systems Q6: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #59
+Difficulty Level(s): ML0
+Q: ML0 Fuel Systems Q23: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #60
+Difficulty Level(s): ML0
+Q: ML0 Fuel Systems Q40: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #61
+Difficulty Level(s): ML0
+Q: ML0 Fuel Systems Q57: What is the primary purpose of fuel systems?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #62
+Difficulty Level(s): ML1
+Q: ML1 Fuel Systems Q6: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #63
+Difficulty Level(s): ML1
+Q: ML1 Fuel Systems Q23: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #64
+Difficulty Level(s): ML1
+Q: ML1 Fuel Systems Q40: What is the purpose of fuel systems component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #65
+Difficulty Level(s): ML1
+Q: ML1 Fuel Systems Q57: What is the operating range for fuel systems?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #66
+Difficulty Level(s): ML2
+Q: ML2 Fuel Systems Q6: What parameter indicates system malfunction in fuel systems?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #67
+Difficulty Level(s): ML2
+Q: ML2 Fuel Systems Q23: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #68
+Difficulty Level(s): ML2
+Q: ML2 Fuel Systems Q40: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #69
+Difficulty Level(s): ML2
+Q: ML2 Fuel Systems Q57: In advanced fuel systems, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #70
+Difficulty Level(s): ML3, ML4
+Q: A removed component is considered serviceable if it has a TBO of 500 hours or more and has 25% or more of the interval remaining?
+
+   A. True [CORRECT]
+   B. False
+
+Question #71
+Difficulty Level(s): ML3
+Q: ML3 Fuel Systems Q23: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #72
+Difficulty Level(s): ML3
+Q: ML3 Fuel Systems Q40: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #73
+Difficulty Level(s): ML3
+Q: ML3 Fuel Systems Q57: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #74
+Difficulty Level(s): ML4
+Q: ML4 Fuel Systems Q6: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+Question #75
+Difficulty Level(s): ML4
+Q: ML4 Fuel Systems Q23: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+Question #76
+Difficulty Level(s): ML4
+Q: ML4 Fuel Systems Q40: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+Question #77
+Difficulty Level(s): ML4
+Q: ML4 Fuel Systems Q57: What AI system optimizes flight envelope protection?
+
+   A. Manual calculation
+   B. Machine learning based optimization [CORRECT]
+   C. Simple algorithm
+   D. Lookup table
+
+
+------------------------------------------------------------
+CATEGORY: GENERAL MAINTENANCE
+------------------------------------------------------------
+
+Question #78
+Difficulty Level(s): ML0
+Q: ML0 General Maintenance Q18: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #79
+Difficulty Level(s): ML0
+Q: ML0 General Maintenance Q35: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #80
+Difficulty Level(s): ML0
+Q: ML0 General Maintenance Q52: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #81
+Difficulty Level(s): ML1
+Q: ML1 General Maintenance Q18: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #82
+Difficulty Level(s): ML1
+Q: ML1 General Maintenance Q35: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #83
+Difficulty Level(s): ML1
+Q: ML1 General Maintenance Q52: What is the purpose of general maintenance component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #84
+Difficulty Level(s): ML2
+Q: ML2 General Maintenance Q18: What parameter indicates system malfunction in general maintenance?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #85
+Difficulty Level(s): ML2
+Q: ML2 General Maintenance Q35: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #86
+Difficulty Level(s): ML2
+Q: ML2 General Maintenance Q52: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #87
+Difficulty Level(s): ML3, ML4
+Q: Select the three combat power measures used to manage the readiness posture of a unit's aircraft.
+
+   A. bank time; aircraft recovery capabilities; personnel present for duty
+   B. operational readiness/ready-to-launch status; bank time; current readiness rate
+   C. current readiness rate; unit flight hour data; personnel present for duty
+   D. operational readiness rates/ready-to-launch status; aircraft recovery capabilities; bank time [CORRECT]
+
+Question #88
+Difficulty Level(s): ML3
+Q: ML3 General Maintenance Q18: What diagnostic system monitors general maintenance?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #89
+Difficulty Level(s): ML3
+Q: ML3 General Maintenance Q35: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #90
+Difficulty Level(s): ML3
+Q: ML3 General Maintenance Q52: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #91
+Difficulty Level(s): ML4
+Q: ML4 General Maintenance Q18: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+Question #92
+Difficulty Level(s): ML4
+Q: ML4 General Maintenance Q35: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+Question #93
+Difficulty Level(s): ML4
+Q: ML4 General Maintenance Q52: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+
+------------------------------------------------------------
+CATEGORY: HARDWARE
+------------------------------------------------------------
+
+Question #94
+Difficulty Level(s): ML0
+Q: ML0 Hardware Q17: What is the primary purpose of hardware?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #95
+Difficulty Level(s): ML0
+Q: ML0 Hardware Q34: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #96
+Difficulty Level(s): ML0
+Q: ML0 Hardware Q51: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #97
+Difficulty Level(s): ML1
+Q: ML1 Hardware Q17: What is the operating range for hardware?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #98
+Difficulty Level(s): ML1
+Q: ML1 Hardware Q34: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #99
+Difficulty Level(s): ML1
+Q: ML1 Hardware Q51: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #100
+Difficulty Level(s): ML2
+Q: ML2 Hardware Q17: In advanced hardware, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #101
+Difficulty Level(s): ML2
+Q: ML2 Hardware Q34: What parameter indicates system malfunction in hardware?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #102
+Difficulty Level(s): ML2
+Q: ML2 Hardware Q51: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #103
+Difficulty Level(s): ML3
+Q: ML3 Hardware Q17: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #104
+Difficulty Level(s): ML3
+Q: ML3 Hardware Q34: What diagnostic system monitors hardware?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #105
+Difficulty Level(s): ML3
+Q: ML3 Hardware Q51: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #106
+Difficulty Level(s): ML4
+Q: ML4 Hardware Q34: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+Question #107
+Difficulty Level(s): ML4
+Q: ML4 Hardware Q51: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+
+------------------------------------------------------------
+CATEGORY: HYDRAULIC SYSTEMS
+------------------------------------------------------------
+
+Question #108
+Difficulty Level(s): ML0
+Q: ML0 Hydraulic Systems Q8: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #109
+Difficulty Level(s): ML0
+Q: ML0 Hydraulic Systems Q25: What is the primary purpose of hydraulic systems?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #110
+Difficulty Level(s): ML0
+Q: ML0 Hydraulic Systems Q42: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #111
+Difficulty Level(s): ML0
+Q: ML0 Hydraulic Systems Q59: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #112
+Difficulty Level(s): ML1
+Q: ML1 Hydraulic Systems Q8: What is the purpose of hydraulic systems component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #113
+Difficulty Level(s): ML1
+Q: ML1 Hydraulic Systems Q25: What is the operating range for hydraulic systems?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #114
+Difficulty Level(s): ML1
+Q: ML1 Hydraulic Systems Q42: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #115
+Difficulty Level(s): ML1
+Q: ML1 Hydraulic Systems Q59: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #116
+Difficulty Level(s): ML2
+Q: ML2 Hydraulic Systems Q8: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #117
+Difficulty Level(s): ML2
+Q: ML2 Hydraulic Systems Q25: In advanced hydraulic systems, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #118
+Difficulty Level(s): ML2
+Q: ML2 Hydraulic Systems Q42: What parameter indicates system malfunction in hydraulic systems?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #119
+Difficulty Level(s): ML2
+Q: ML2 Hydraulic Systems Q59: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #120
+Difficulty Level(s): ML3
+Q: ML3 Hydraulic Systems Q8: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #121
+Difficulty Level(s): ML3
+Q: ML3 Hydraulic Systems Q25: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #122
+Difficulty Level(s): ML3
+Q: ML3 Hydraulic Systems Q42: What diagnostic system monitors hydraulic systems?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #123
+Difficulty Level(s): ML3
+Q: ML3 Hydraulic Systems Q59: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #124
+Difficulty Level(s): ML4
+Q: ML4 Hydraulic Systems Q8: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+Question #125
+Difficulty Level(s): ML4
+Q: ML4 Hydraulic Systems Q25: What AI system optimizes flight envelope protection?
+
+   A. Manual calculation
+   B. Machine learning based optimization [CORRECT]
+   C. Simple algorithm
+   D. Lookup table
+
+Question #126
+Difficulty Level(s): ML4
+Q: ML4 Hydraulic Systems Q42: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+Question #127
+Difficulty Level(s): ML4
+Q: ML4 Hydraulic Systems Q59: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+
+------------------------------------------------------------
+CATEGORY: INSPECTION
+------------------------------------------------------------
+
+Question #128
+Difficulty Level(s): ML0
+Q: ML0 Inspection Q12: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #129
+Difficulty Level(s): ML0
+Q: ML0 Inspection Q29: What is the primary purpose of inspection?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #130
+Difficulty Level(s): ML0
+Q: ML0 Inspection Q46: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #131
+Difficulty Level(s): ML1
+Q: ML1 Inspection Q12: What is the purpose of inspection component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #132
+Difficulty Level(s): ML1
+Q: ML1 Inspection Q29: What is the operating range for inspection?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #133
+Difficulty Level(s): ML1
+Q: ML1 Inspection Q46: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #134
+Difficulty Level(s): ML2
+Q: ML2 Inspection Q12: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #135
+Difficulty Level(s): ML2
+Q: ML2 Inspection Q29: In advanced inspection, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #136
+Difficulty Level(s): ML2
+Q: ML2 Inspection Q46: What parameter indicates system malfunction in inspection?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #137
+Difficulty Level(s): ML3
+Q: ML3 Inspection Q29: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #138
+Difficulty Level(s): ML3
+Q: ML3 Inspection Q46: What diagnostic system monitors inspection?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #139
+Difficulty Level(s): ML4
+Q: ML4 Inspection Q12: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+Question #140
+Difficulty Level(s): ML4
+Q: ML4 Inspection Q46: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+
+------------------------------------------------------------
+CATEGORY: INSTRUMENTS
+------------------------------------------------------------
+
+Question #141
+Difficulty Level(s): ML0
+Q: ML0 Instruments Q15: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #142
+Difficulty Level(s): ML0
+Q: ML0 Instruments Q32: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #143
+Difficulty Level(s): ML0
+Q: ML0 Instruments Q49: What is the primary purpose of instruments?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #144
+Difficulty Level(s): ML1
+Q: ML1 Instruments Q15: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #145
+Difficulty Level(s): ML1
+Q: ML1 Instruments Q32: What is the purpose of instruments component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #146
+Difficulty Level(s): ML1
+Q: ML1 Instruments Q49: What is the operating range for instruments?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #147
+Difficulty Level(s): ML2
+Q: ML2 Instruments Q15: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #148
+Difficulty Level(s): ML2
+Q: ML2 Instruments Q32: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #149
+Difficulty Level(s): ML2
+Q: ML2 Instruments Q49: In advanced instruments, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #150
+Difficulty Level(s): ML3
+Q: ML3 Instruments Q15: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #151
+Difficulty Level(s): ML3
+Q: ML3 Instruments Q32: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #152
+Difficulty Level(s): ML3
+Q: ML3 Instruments Q49: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #153
+Difficulty Level(s): ML4
+Q: ML4 Instruments Q15: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+Question #154
+Difficulty Level(s): ML4
+Q: ML4 Instruments Q32: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+Question #155
+Difficulty Level(s): ML4
+Q: ML4 Instruments Q49: What AI system optimizes flight envelope protection?
+
+   A. Manual calculation
+   B. Machine learning based optimization [CORRECT]
+   C. Simple algorithm
+   D. Lookup table
+
+
+------------------------------------------------------------
+CATEGORY: LANDING GEAR
+------------------------------------------------------------
+
+Question #156
+Difficulty Level(s): ML0
+Q: ML0 Landing Gear Q14: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #157
+Difficulty Level(s): ML0
+Q: ML0 Landing Gear Q31: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #158
+Difficulty Level(s): ML0
+Q: ML0 Landing Gear Q48: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #159
+Difficulty Level(s): ML1
+Q: ML1 Landing Gear Q14: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #160
+Difficulty Level(s): ML1
+Q: ML1 Landing Gear Q31: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #161
+Difficulty Level(s): ML1
+Q: ML1 Landing Gear Q48: What is the purpose of landing gear component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #162
+Difficulty Level(s): ML2
+Q: ML2 Landing Gear Q14: What parameter indicates system malfunction in landing gear?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #163
+Difficulty Level(s): ML2
+Q: ML2 Landing Gear Q31: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #164
+Difficulty Level(s): ML2
+Q: ML2 Landing Gear Q48: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #165
+Difficulty Level(s): ML3
+Q: ML3 Landing Gear Q14: What diagnostic system monitors landing gear?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #166
+Difficulty Level(s): ML3
+Q: ML3 Landing Gear Q31: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #167
+Difficulty Level(s): ML3
+Q: ML3 Landing Gear Q48: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #168
+Difficulty Level(s): ML4
+Q: ML4 Landing Gear Q14: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+Question #169
+Difficulty Level(s): ML4
+Q: ML4 Landing Gear Q31: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+Question #170
+Difficulty Level(s): ML4
+Q: ML4 Landing Gear Q48: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+
+------------------------------------------------------------
+CATEGORY: MAINTENANCE PROCEDURES
+------------------------------------------------------------
+
+Question #171
+Difficulty Level(s): ML0, ML1, ML2, ML3, ML4
+Q: In preparation for flight, a maintainer powered on the UGCS and LEA before performing UGDT REA power-up. Which fault does this error produce?
+
+   A. Applying power to the REA before the LEA doesn't present any known faults
+   B. The LEA erases any stored COMSEC if it doesn't detect a REA
+   C. UGDT Hardware failure populates in the UGCS WCA window [CORRECT]
+   D. The UGDT will take longer to calibrate
+
+Question #172
+Difficulty Level(s): ML1
+Q: ML1 Maintenance Procedures Q1: Which data link receptacle is used to load SMA COMSEC?
+
+   A. DATALINK 1 [CORRECT]
+   B. DATALINK 2
+   C. DATALINK 3
+   D. DATALINK 4
+
+Question #173
+Difficulty Level(s): ML1, ML2, ML3, ML4
+Q: ML1 Maintenance Procedures Q2: Under what conditions would you install an intake blower when performing an engine operational check?
+
+   A. If engine oil pressure remains below the minimum threshold for longer than 10 seconds
+   B. when OAT is at or above 90 degrees F [CORRECT]
+   C. If the engine experienced an over-temperature event
+   D. The intake blower is required when performing any engine operation event
+
+
+------------------------------------------------------------
+CATEGORY: MATERIALS
+------------------------------------------------------------
+
+Question #174
+Difficulty Level(s): ML0
+Q: ML0 Materials Q11: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #175
+Difficulty Level(s): ML0
+Q: ML0 Materials Q28: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #176
+Difficulty Level(s): ML0
+Q: ML0 Materials Q45: What is the primary purpose of materials?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #177
+Difficulty Level(s): ML1
+Q: ML1 Materials Q11: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #178
+Difficulty Level(s): ML1
+Q: ML1 Materials Q28: What is the purpose of materials component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #179
+Difficulty Level(s): ML1
+Q: ML1 Materials Q45: What is the operating range for materials?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #180
+Difficulty Level(s): ML2
+Q: ML2 Materials Q11: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #181
+Difficulty Level(s): ML2
+Q: ML2 Materials Q28: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #182
+Difficulty Level(s): ML2
+Q: ML2 Materials Q45: In advanced materials, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #183
+Difficulty Level(s): ML3
+Q: ML3 Materials Q11: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #184
+Difficulty Level(s): ML3
+Q: ML3 Materials Q28: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #185
+Difficulty Level(s): ML3
+Q: ML3 Materials Q45: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #186
+Difficulty Level(s): ML4
+Q: ML4 Materials Q11: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+Question #187
+Difficulty Level(s): ML4
+Q: ML4 Materials Q28: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+Question #188
+Difficulty Level(s): ML4
+Q: ML4 Materials Q45: What AI system optimizes flight envelope protection?
+
+   A. Manual calculation
+   B. Machine learning based optimization [CORRECT]
+   C. Simple algorithm
+   D. Lookup table
+
+
+------------------------------------------------------------
+CATEGORY: MECHANICAL SYSTEMS
+------------------------------------------------------------
+
+Question #189
+Difficulty Level(s): ML0
+Q: ML0 Mechanical Systems Q16: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #190
+Difficulty Level(s): ML0
+Q: ML0 Mechanical Systems Q33: What is the primary purpose of mechanical systems?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #191
+Difficulty Level(s): ML0
+Q: ML0 Mechanical Systems Q50: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #192
+Difficulty Level(s): ML1
+Q: ML1 Mechanical Systems Q16: What is the purpose of mechanical systems component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #193
+Difficulty Level(s): ML1
+Q: ML1 Mechanical Systems Q33: What is the operating range for mechanical systems?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #194
+Difficulty Level(s): ML1
+Q: ML1 Mechanical Systems Q50: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #195
+Difficulty Level(s): ML2
+Q: ML2 Mechanical Systems Q16: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #196
+Difficulty Level(s): ML2
+Q: ML2 Mechanical Systems Q33: In advanced mechanical systems, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #197
+Difficulty Level(s): ML2
+Q: ML2 Mechanical Systems Q50: What parameter indicates system malfunction in mechanical systems?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #198
+Difficulty Level(s): ML3
+Q: ML3 Mechanical Systems Q16: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #199
+Difficulty Level(s): ML3
+Q: ML3 Mechanical Systems Q33: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #200
+Difficulty Level(s): ML3
+Q: ML3 Mechanical Systems Q50: What diagnostic system monitors mechanical systems?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #201
+Difficulty Level(s): ML4
+Q: ML4 Mechanical Systems Q16: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+Question #202
+Difficulty Level(s): ML4
+Q: ML4 Mechanical Systems Q33: What AI system optimizes flight envelope protection?
+
+   A. Manual calculation
+   B. Machine learning based optimization [CORRECT]
+   C. Simple algorithm
+   D. Lookup table
+
+Question #203
+Difficulty Level(s): ML4
+Q: ML4 Mechanical Systems Q50: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+
+------------------------------------------------------------
+CATEGORY: POWERPLANT
+------------------------------------------------------------
+
+Question #204
+Difficulty Level(s): ML0
+Q: ML0 Powerplant Q9: What is the primary purpose of powerplant?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #205
+Difficulty Level(s): ML0
+Q: ML0 Powerplant Q26: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #206
+Difficulty Level(s): ML0
+Q: ML0 Powerplant Q43: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #207
+Difficulty Level(s): ML0
+Q: ML0 Powerplant Q60: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #208
+Difficulty Level(s): ML1
+Q: ML1 Powerplant Q9: What is the operating range for powerplant?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #209
+Difficulty Level(s): ML1
+Q: ML1 Powerplant Q26: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #210
+Difficulty Level(s): ML1
+Q: ML1 Powerplant Q43: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #211
+Difficulty Level(s): ML1
+Q: ML1 Powerplant Q60: What is the purpose of powerplant component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #212
+Difficulty Level(s): ML2
+Q: ML2 Powerplant Q9: In advanced powerplant, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #213
+Difficulty Level(s): ML2
+Q: ML2 Powerplant Q26: What parameter indicates system malfunction in powerplant?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #214
+Difficulty Level(s): ML2
+Q: ML2 Powerplant Q43: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #215
+Difficulty Level(s): ML2
+Q: ML2 Powerplant Q60: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #216
+Difficulty Level(s): ML3, ML4
+Q: Temporary ballast installed in the aft payload bay may not exceed ____
+
+   A. 40lbs
+   B. 50lbs [CORRECT]
+   C. 90lbs
+   D. 100lbs
+
+Question #217
+Difficulty Level(s): ML3
+Q: ML3 Powerplant Q26: What diagnostic system monitors powerplant?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #218
+Difficulty Level(s): ML3
+Q: ML3 Powerplant Q43: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #219
+Difficulty Level(s): ML3
+Q: ML3 Powerplant Q60: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #220
+Difficulty Level(s): ML4
+Q: ML4 Powerplant Q9: What AI system optimizes flight envelope protection?
+
+   A. Manual calculation
+   B. Machine learning based optimization [CORRECT]
+   C. Simple algorithm
+   D. Lookup table
+
+Question #221
+Difficulty Level(s): ML4
+Q: ML4 Powerplant Q26: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+Question #222
+Difficulty Level(s): ML4
+Q: ML4 Powerplant Q43: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+
+------------------------------------------------------------
+CATEGORY: PROCEDURES
+------------------------------------------------------------
+
+Question #223
+Difficulty Level(s): ML0
+Q: ML0 Procedures Q5: What is the primary purpose of procedures?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #224
+Difficulty Level(s): ML0
+Q: ML0 Procedures Q22: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #225
+Difficulty Level(s): ML0
+Q: ML0 Procedures Q39: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #226
+Difficulty Level(s): ML0
+Q: ML0 Procedures Q56: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #227
+Difficulty Level(s): ML1
+Q: ML1 Procedures Q5: What is the operating range for procedures?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #228
+Difficulty Level(s): ML1
+Q: ML1 Procedures Q22: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #229
+Difficulty Level(s): ML1
+Q: ML1 Procedures Q39: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #230
+Difficulty Level(s): ML1
+Q: ML1 Procedures Q56: What is the purpose of procedures component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #231
+Difficulty Level(s): ML2
+Q: ML2 Procedures Q5: In advanced procedures, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #232
+Difficulty Level(s): ML2
+Q: ML2 Procedures Q22: What parameter indicates system malfunction in procedures?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #233
+Difficulty Level(s): ML2
+Q: ML2 Procedures Q39: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #234
+Difficulty Level(s): ML2
+Q: ML2 Procedures Q56: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #235
+Difficulty Level(s): ML3
+Q: ML3 Procedures Q5: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #236
+Difficulty Level(s): ML3
+Q: ML3 Procedures Q22: What diagnostic system monitors procedures?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #237
+Difficulty Level(s): ML3
+Q: ML3 Procedures Q39: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #238
+Difficulty Level(s): ML3
+Q: ML3 Procedures Q56: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #239
+Difficulty Level(s): ML4
+Q: ML4 Procedures Q22: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+Question #240
+Difficulty Level(s): ML4
+Q: ML4 Procedures Q39: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+Question #241
+Difficulty Level(s): ML4
+Q: ML4 Procedures Q56: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+
+------------------------------------------------------------
+CATEGORY: REGULATIONS
+------------------------------------------------------------
+
+Question #242
+Difficulty Level(s): ML0, ML1
+Q: Which document provides a detailed description of each step in the P4T3 process?
+
+   A. TC 3-04.71
+   B. AR 95-1
+   C. ATP 3-04.7 [CORRECT]
+   D. DA PAM 738-751
+
+Question #243
+Difficulty Level(s): ML2, ML3, ML4
+Q: The Army tiered two maintenance strategy consist of what components?
+
+   A. sustainment maintenance & engineering
+   B. sustainment maintenance & field maintenance [CORRECT]
+   C. field maintenance & engineering
+   D. field maintenance & field support
+
+Question #244
+Difficulty Level(s): ML4, ML3
+Q: Concerning components with a TBO of 400 hours or more, the removal time may vary above or below the assigned TBO by 10%
+
+   A. True
+   B. False [CORRECT]
+
+Question #245
+Difficulty Level(s): ML4
+Q: What is the replacement cost of a MQ-1C ER aircraft?
+
+   A. $2,632,411
+   B. $4,391,208
+   C. $6,883,862 [CORRECT]
+   D. $5,429,338
+
+Question #246
+Difficulty Level(s): ML4
+Q: Select the most accurate for MWO compliance. 
+
+   A. record accomplishment on the equipment 2408-15, 2408-5-1, MMIS
+   B. record accomplishment on the Equipment Modification Record and MMIS
+   C. record MWO accomplishment on the Equipment 
+   D. record MWO accomplishment on MMIS, the equipment 2408-5, 2408-5-1 and 2408-15 [CORRECT]
+
+
+------------------------------------------------------------
+CATEGORY: SAFETY
+------------------------------------------------------------
+
+Question #247
+Difficulty Level(s): ML0
+Q: ML0 Safety Q3: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #248
+Difficulty Level(s): ML0
+Q: ML0 Safety Q20: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #249
+Difficulty Level(s): ML0
+Q: ML0 Safety Q37: What is the primary purpose of safety?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #250
+Difficulty Level(s): ML0
+Q: ML0 Safety Q54: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #251
+Difficulty Level(s): ML1
+Q: ML1 Safety Q3: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #252
+Difficulty Level(s): ML1
+Q: ML1 Safety Q20: What is the purpose of safety component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #253
+Difficulty Level(s): ML1
+Q: ML1 Safety Q37: What is the operating range for safety?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #254
+Difficulty Level(s): ML1
+Q: ML1 Safety Q54: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #255
+Difficulty Level(s): ML2
+Q: ML2 Safety Q3: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #256
+Difficulty Level(s): ML2
+Q: ML2 Safety Q20: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #257
+Difficulty Level(s): ML2
+Q: ML2 Safety Q37: In advanced safety, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #258
+Difficulty Level(s): ML2
+Q: ML2 Safety Q54: What parameter indicates system malfunction in safety?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #259
+Difficulty Level(s): ML3, ML2, ML4
+Q: Who is responsible for the prioritization of work within a maintenance section?
+
+   A. platoon sergeant 
+   B. PC OIC/NCOIC [CORRECT]
+   C. maintenance leader
+   D. the commander
+
+Question #260
+Difficulty Level(s): ML3
+Q: ML3 Safety Q20: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #261
+Difficulty Level(s): ML3
+Q: ML3 Safety Q37: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #262
+Difficulty Level(s): ML3
+Q: ML3 Safety Q54: What diagnostic system monitors safety?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #263
+Difficulty Level(s): ML4
+Q: A unit plans to deploy half of its fleet to support a mission from a forward site. Which ACN function should the unit utilize to allow the deployed entity to manage it's equipment without the need for a home server?
+
+   A. admin workcenter
+   B. create a DEM [CORRECT]
+   C. Print forms from ACN and email to the forward site
+   D. master data update
+
+Question #264
+Difficulty Level(s): ML4
+Q: ML4 Safety Q20: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+Question #265
+Difficulty Level(s): ML4
+Q: ML4 Safety Q37: What AI system optimizes flight envelope protection?
+
+   A. Manual calculation
+   B. Machine learning based optimization [CORRECT]
+   C. Simple algorithm
+   D. Lookup table
+
+Question #266
+Difficulty Level(s): ML4
+Q: ML4 Safety Q54: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+
+------------------------------------------------------------
+CATEGORY: STRUCTURAL
+------------------------------------------------------------
+
+Question #267
+Difficulty Level(s): ML0
+Q: ML0 Structural Q10: Which tool is used for precision measurement?
+
+   A. Hammer
+   B. Specialized tool [CORRECT]
+   C. Wrench
+   D. Pliers
+
+Question #268
+Difficulty Level(s): ML0
+Q: ML0 Structural Q27: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #269
+Difficulty Level(s): ML0
+Q: ML0 Structural Q44: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #270
+Difficulty Level(s): ML1
+Q: ML1 Structural Q10: Which component converts AC to DC?
+
+   A. Transformer
+   B. Converter/Regulator [CORRECT]
+   C. Filter
+   D. Amplifier
+
+Question #271
+Difficulty Level(s): ML1
+Q: ML1 Structural Q27: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #272
+Difficulty Level(s): ML1
+Q: ML1 Structural Q44: What is the purpose of structural component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #273
+Difficulty Level(s): ML2
+Q: ML2 Structural Q10: What parameter indicates system malfunction in structural?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #274
+Difficulty Level(s): ML2
+Q: ML2 Structural Q27: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #275
+Difficulty Level(s): ML2
+Q: ML2 Structural Q44: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #276
+Difficulty Level(s): ML3
+Q: ML3 Structural Q10: What diagnostic system monitors structural?
+
+   A. Visual inspection
+   B. Integrated health monitoring system [CORRECT]
+   C. Manual checks
+   D. External sensors
+
+Question #277
+Difficulty Level(s): ML3
+Q: ML3 Structural Q27: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #278
+Difficulty Level(s): ML3
+Q: ML3 Structural Q44: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #279
+Difficulty Level(s): ML4
+Q: ML4 Structural Q10: How does emerging technology improve maintenance efficiency?
+
+   A. No improvement
+   B. Significant technical improvement [CORRECT]
+   C. Minor improvement
+   D. Cost reduction only
+
+Question #280
+Difficulty Level(s): ML4
+Q: ML4 Structural Q27: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+Question #281
+Difficulty Level(s): ML4
+Q: ML4 Structural Q44: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+
+------------------------------------------------------------
+CATEGORY: TOOLS AND EQUIPMENT
+------------------------------------------------------------
+
+Question #282
+Difficulty Level(s): ML0
+Q: ML0 Tools and Equipment Q19: What safety equipment is required when working in hazardous areas?
+
+   A. None
+   B. Appropriate PPE [CORRECT]
+   C. Only goggles
+   D. Only gloves
+
+Question #283
+Difficulty Level(s): ML0
+Q: ML0 Tools and Equipment Q36: When should you perform maintenance?
+
+   A. Never
+   B. According to manual procedures [CORRECT]
+   C. Anytime
+   D. Only during emergencies
+
+Question #284
+Difficulty Level(s): ML0
+Q: ML0 Tools and Equipment Q53: What is the primary purpose of tools and equipment?
+
+   A. Safety [CORRECT]
+   B. Cost reduction
+   C. Performance
+   D. Aesthetics
+
+Question #285
+Difficulty Level(s): ML1
+Q: ML1 Tools and Equipment Q19: What inspection method detects surface cracks?
+
+   A. Visual only
+   B. Specialized NDT method [CORRECT]
+   C. Measurement
+   D. Functional test
+
+Question #286
+Difficulty Level(s): ML1
+Q: ML1 Tools and Equipment Q36: What is the purpose of tools and equipment component?
+
+   A. Decoration
+   B. Critical system function [CORRECT]
+   C. Optional enhancement
+   D. Weight balance
+
+Question #287
+Difficulty Level(s): ML1
+Q: ML1 Tools and Equipment Q53: What is the operating range for tools and equipment?
+
+   A. 100-500
+   B. 1000-3000 [CORRECT]
+   C. 5000-7000
+   D. 8000-10000
+
+Question #288
+Difficulty Level(s): ML2
+Q: ML2 Tools and Equipment Q2: What parameter indicates system malfunction in tools and equipment?
+
+   A. Normal readings
+   B. Abnormal specific reading [CORRECT]
+   C. No indication
+   D. Visual inspection only
+
+Question #289
+Difficulty Level(s): ML2
+Q: ML2 Tools and Equipment Q19: Which material property is critical for high-stress applications?
+
+   A. Color
+   B. Specific technical property [CORRECT]
+   C. Weight only
+   D. Cost
+
+Question #290
+Difficulty Level(s): ML2
+Q: ML2 Tools and Equipment Q36: What is the bypass ratio in turbofan engines?
+
+   A. 1:1
+   B. Specific technical ratio [CORRECT]
+   C. No bypass
+   D. Variable
+
+Question #291
+Difficulty Level(s): ML2
+Q: ML2 Tools and Equipment Q53: In advanced tools and equipment, what provides automated control?
+
+   A. Manual control
+   B. Automated control system [CORRECT]
+   C. Mechanical linkage
+   D. Hydraulic pressure
+
+Question #292
+Difficulty Level(s): ML3, ML4
+Q: What are aircraft tire requirements when transferring an aircraft to another non-combat theater?
+
+   A. refer to aircraft TM for tire replacement guidelines 
+   B. there is no regulatory requirement to replace tires before aircraft transfer
+   C. replace tires if 25% or less of the tire tread remains [CORRECT]
+   D. replace tires if 50% or less of the tire tread remains
+
+Question #293
+Difficulty Level(s): ML3
+Q: ML3 Tools and Equipment Q19: Which composite repair technique is used for structural damage?
+
+   A. Aluminum patch
+   B. Specialized composite repair [CORRECT]
+   C. Simple adhesive
+   D. Riveted repair
+
+Question #294
+Difficulty Level(s): ML3
+Q: ML3 Tools and Equipment Q36: What redundancy level is required for flight-critical systems?
+
+   A. None
+   B. Multiple redundant systems [CORRECT]
+   C. Single backup
+   D. Optional backup
+
+Question #295
+Difficulty Level(s): ML3
+Q: ML3 Tools and Equipment Q53: In fly-by-wire systems, what provides flight envelope protection?
+
+   A. Pilot input
+   B. Flight control computers [CORRECT]
+   C. Mechanical systems
+   D. Hydraulic actuators
+
+Question #296
+Difficulty Level(s): ML4
+Q: ML4 Tools and Equipment Q19: What predictive maintenance technique identifies component fatigue?
+
+   A. Visual inspection
+   B. AI-powered predictive analytics [CORRECT]
+   C. Scheduled checks
+   D. Reactive maintenance
+
+Question #297
+Difficulty Level(s): ML4
+Q: ML4 Tools and Equipment Q36: Which advanced material offers superior performance for high-stress applications?
+
+   A. Standard aluminum
+   B. Advanced composite or alloy [CORRECT]
+   C. Steel
+   D. Plastic
+
+
+------------------------------------------------------------
+CATEGORY: WEIGHT AND BALANCE
+------------------------------------------------------------
+
+Question #298
+Difficulty Level(s): ML3, ML4
+Q: What are the lateral CG limits for a MQ-1C ER aircraft
+
+   A. None [CORRECT]
+   B. inclinometer reading between -0.5 - 0.5
+   C. inclinometer reading between -1.0 - 1.0
+   D. inclinometer reading between -1.5 - 1.5
+
+Question #299
+Difficulty Level(s): ML4, ML3
+Q: What is the max takeoff CG for an aircraft with a ramp weight of 4200lbs?
+
+   A. 26.5% [CORRECT]
+   B. 31%
+   C. 33%
+   D. 35%
+
+Question #300
+Difficulty Level(s): ML4, ML3
+Q: When replacing a 30in SATCOM antenna assembly, you notice the 9.5in antenna ballast was removed. How much weight would you add to the 9.5in antenna pedestal to ensure the moment of the 9.5in antenna is similar to the moment of the 30in SATCOM antenna?
+
+   A. 20lbs
+   B. 30lbs
+   C. 40lbs [CORRECT]
+   D. 50lbs
+
