@@ -23,6 +23,8 @@ export const examSessions = pgTable("exam_sessions", {
   flaggedQuestions: jsonb("flagged_questions").default([]),
   startTime: timestamp("start_time"),
   endTime: timestamp("end_time"),
+  timeUsed: integer("time_used").default(0),
+  lastActiveTime: timestamp("last_active_time"),
   completed: boolean("completed").default(false),
   score: integer("score"),
   createdAt: timestamp("created_at").default(sql`now()`),
