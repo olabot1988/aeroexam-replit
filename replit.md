@@ -64,7 +64,18 @@ Preferred communication style: Simple, everyday language.
 
 **Admin Question Management**: Separate admin interface with authentication for managing exam questions, including CRUD operations with filtering and search capabilities.
 
-### Recent Changes (November 17, 2025)
+### Recent Changes (January 25, 2026)
+
+**Exam Time Pause/Resume Feature**: Implemented the ability for exam time to pause when a user leaves and resume when they return:
+- Added `timeUsed` and `lastActiveTime` columns to exam_sessions table
+- Time now tracks actual seconds spent on the exam, not wall-clock time
+- Users can leave an exam and return the next day with their remaining time preserved
+- Example: If a user starts an exam and leaves after 1 hour, they return with 7 hours remaining
+- Auto-saves time every 30 seconds and on page visibility changes
+- Saves time when user clicks "Save for Later" or closes the browser
+- Server-side validation prevents time regression and caps at 8 hours total
+
+### Previous Changes (November 17, 2025)
 
 **Random Question Selection**: Implemented random question selection to prevent test memorization:
 - Created comprehensive question bank with 60 questions per maintenance level (300 total)
