@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams } from "wouter";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
@@ -12,6 +12,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { LogOut, Save } from "lucide-react";
 import type { Question } from "@shared/schema";
 
+const TOTAL_EXAM_TIME = 28800; // 8 hours in seconds
+
 export default function Examination() {
   const { sessionKey } = useParams();
   const [, setLocation] = useLocation();
@@ -20,17 +22,48 @@ export default function Examination() {
   
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [timeLeft, setTimeLeft] = useState(28800); // 8 hours in seconds
+  const [timeLeft, setTimeLeft] = useState(TOTAL_EXAM_TIME);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [flaggedQuestions, setFlaggedQuestions] = useState<number[]>([]);
   const [examInitialized, setExamInitialized] = useState(false);
+  const [savedTimeUsed, setSavedTimeUsed] = useState(0);
+  const sessionStartRef = useRef<number>(Date.now());
 
   // Get session data
   const { data: session, isLoading: sessionLoading } = useQuery({
     queryKey: ["/api/exam", sessionKey],
     enabled: !!sessionKey,
   });
+
+  // Calculate current time used (saved + time since this session started)
+  const getCurrentTimeUsed = useCallback(() => {
+    const sessionElapsed = Math.floor((Date.now() - sessionStartRef.current) / 1000);
+    return savedTimeUsed + sessionElapsed;
+  }, [savedTimeUsed]);
+
+  // Save time mutation
+  const saveTimeMutation = useMutation({
+    mutationFn: async (timeUsed: number) => {
+      const response = await apiRequest("POST", `/api/exam/${sessionKey}/save-time`, { timeUsed });
+      return response.json();
+    },
+    onSuccess: (data) => {
+      // Update savedTimeUsed with server's confirmed value and reset session start
+      if (data.timeUsed !== undefined) {
+        setSavedTimeUsed(data.timeUsed);
+        sessionStartRef.current = Date.now();
+      }
+    },
+  });
+
+  // Save time to server
+  const saveTimeToServer = useCallback(() => {
+    if (sessionKey && examInitialized) {
+      const currentTimeUsed = getCurrentTimeUsed();
+      saveTimeMutation.mutate(currentTimeUsed);
+    }
+  }, [sessionKey, examInitialized, getCurrentTimeUsed, saveTimeMutation]);
 
   // Start exam and get questions
   const startExamMutation = useMutation({
@@ -42,14 +75,12 @@ export default function Examination() {
       setQuestions(data.questions);
       setExamInitialized(true);
       
-      if (data.session.startTime) {
-        // Calculate remaining time if exam was already started
-        const startTime = new Date(data.session.startTime).getTime();
-        const now = new Date().getTime();
-        const elapsed = Math.floor((now - startTime) / 1000);
-        const remaining = Math.max(0, 28800 - elapsed);
-        setTimeLeft(remaining);
-      }
+      // Use timeUsed from server to calculate remaining time (pause/resume support)
+      const timeUsed = data.timeUsed || 0;
+      setSavedTimeUsed(timeUsed);
+      sessionStartRef.current = Date.now();
+      const remaining = Math.max(0, TOTAL_EXAM_TIME - timeUsed);
+      setTimeLeft(remaining);
       
       // Restore previous state if continuing
       if (data.session.answers) {
@@ -157,6 +188,45 @@ export default function Examination() {
     return () => clearInterval(timer);
   }, [timeLeft, submitExamMutation]);
 
+  // Auto-save time every 30 seconds
+  useEffect(() => {
+    if (!examInitialized) return;
+
+    const autoSaveInterval = setInterval(() => {
+      saveTimeToServer();
+    }, 30000); // Save every 30 seconds
+
+    return () => clearInterval(autoSaveInterval);
+  }, [examInitialized, saveTimeToServer]);
+
+  // Save time on page unload/visibility change (pause/resume support)
+  useEffect(() => {
+    if (!examInitialized) return;
+
+    const handleBeforeUnload = () => {
+      // Use sendBeacon for reliability during page unload
+      const timeUsed = getCurrentTimeUsed();
+      navigator.sendBeacon(
+        `/api/exam/${sessionKey}/save-time`,
+        JSON.stringify({ timeUsed })
+      );
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        saveTimeToServer();
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [examInitialized, sessionKey, getCurrentTimeUsed, saveTimeToServer]);
+
   // Start exam when component mounts
   useEffect(() => {
     if (session && !examInitialized && !startExamMutation.isPending) {
@@ -218,9 +288,11 @@ export default function Examination() {
   };
 
   const handleLeaveExam = () => {
+    // Save time before leaving
+    saveTimeToServer();
     toast({
       title: "Progress Saved",
-      description: "Use your last name and password to continue later.",
+      description: "Your time has been paused. Use your last name and password to continue later.",
     });
     setLocation("/");
   };

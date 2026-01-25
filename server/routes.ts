@@ -78,25 +78,64 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const questionIds = Array.isArray(session.questionIds) ? session.questionIds : [];
     const examQuestions = await storage.getQuestionsByIds(questionIds as string[]);
 
-    // If exam already started, return the existing session data
+    // If exam already started, update lastActiveTime and return existing session data
     if (session.startTime) {
+      const updatedSession = await storage.updateExamSession(sessionKey, {
+        lastActiveTime: new Date()
+      });
       return res.json({
-        session,
+        session: updatedSession,
         questions: examQuestions,
-        totalQuestions: examQuestions.length
+        totalQuestions: examQuestions.length,
+        timeUsed: updatedSession?.timeUsed || session.timeUsed || 0
       });
     }
 
-    // Update session with start time
+    // Update session with start time and lastActiveTime
     const updatedSession = await storage.updateExamSession(sessionKey, {
-      startTime: new Date()
+      startTime: new Date(),
+      lastActiveTime: new Date(),
+      timeUsed: 0
     });
 
     res.json({ 
       session: updatedSession, 
       questions: examQuestions,
-      totalQuestions: examQuestions.length
+      totalQuestions: examQuestions.length,
+      timeUsed: 0
     });
+  });
+
+  // Save exam time (called when user leaves or periodically)
+  app.post("/api/exam/:sessionKey/save-time", async (req, res) => {
+    try {
+      const { sessionKey } = req.params;
+      const { timeUsed } = req.body;
+      
+      const session = await storage.getExamSessionByKey(sessionKey);
+      if (!session) {
+        return res.status(404).json({ error: "Session not found" });
+      }
+
+      if (session.completed) {
+        return res.status(400).json({ error: "Exam already completed" });
+      }
+
+      // Validate and clamp timeUsed: must be >= current stored value, <= total exam time (8 hours)
+      const TOTAL_EXAM_TIME = 28800;
+      const currentTimeUsed = session.timeUsed || 0;
+      const newTimeUsed = Math.max(currentTimeUsed, Math.min(Math.floor(timeUsed), TOTAL_EXAM_TIME));
+
+      // Update time used
+      const updatedSession = await storage.updateExamSession(sessionKey, {
+        timeUsed: newTimeUsed,
+        lastActiveTime: new Date()
+      });
+
+      res.json({ success: true, timeUsed: updatedSession?.timeUsed });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to save time" });
+    }
   });
 
   // Submit answer
