@@ -14,6 +14,8 @@ export interface IStorage {
   updateExamSession(sessionKey: string, updates: Partial<ExamSession>): Promise<ExamSession | undefined>;
   findExamSessionByCredentials(lastName: string, password: string): Promise<ExamSession | undefined>;
   cleanupOldExamSessions(): Promise<number>;
+  deleteExamSession(sessionKey: string): Promise<boolean>;
+  deleteExamSessionById(id: number): Promise<boolean>;
   
   getQuestionsByDifficulty(difficulty: string): Promise<Question[]>;
   getQuestionsByIds(ids: string[]): Promise<Question[]>;
@@ -265,6 +267,19 @@ export class MemStorage implements IStorage {
     });
     
     return deletedCount;
+  }
+
+  async deleteExamSession(sessionKey: string): Promise<boolean> {
+    return this.examSessions.delete(sessionKey);
+  }
+
+  async deleteExamSessionById(id: number): Promise<boolean> {
+    for (const [key, session] of Array.from(this.examSessions.entries())) {
+      if (session.id === id) {
+        return this.examSessions.delete(key);
+      }
+    }
+    return false;
   }
 
   async getQuestionsByDifficulty(difficulty: string): Promise<Question[]> {
@@ -802,6 +817,20 @@ export class DatabaseStorage implements IStorage {
       ));
     
     return result.rowCount || 0;
+  }
+
+  async deleteExamSession(sessionKey: string): Promise<boolean> {
+    const result = await db
+      .delete(examSessions)
+      .where(eq(examSessions.sessionKey, sessionKey));
+    return (result.rowCount || 0) > 0;
+  }
+
+  async deleteExamSessionById(id: number): Promise<boolean> {
+    const result = await db
+      .delete(examSessions)
+      .where(eq(examSessions.id, id));
+    return (result.rowCount || 0) > 0;
   }
 
   async getQuestionsByDifficulty(difficulty: string): Promise<Question[]> {

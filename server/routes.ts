@@ -458,6 +458,42 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Delete exam session by session key (admin only)
+  app.delete("/api/admin/exam-sessions/:sessionKey", async (req, res) => {
+    try {
+      const { sessionKey } = req.params;
+      const deleted = await storage.deleteExamSession(sessionKey);
+      
+      if (!deleted) {
+        return res.status(404).json({ error: "Exam session not found" });
+      }
+      
+      res.json({ success: true, message: "Exam session deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete exam session" });
+    }
+  });
+
+  // Delete exam session by ID (admin only)
+  app.delete("/api/admin/exam-sessions/id/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ error: "Invalid session ID" });
+      }
+      
+      const deleted = await storage.deleteExamSessionById(id);
+      
+      if (!deleted) {
+        return res.status(404).json({ error: "Exam session not found" });
+      }
+      
+      res.json({ success: true, message: "Exam session deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete exam session" });
+    }
+  });
+
   // Get all completed exam sessions for admin review
   app.get("/api/admin/completed-exams", async (req, res) => {
     try {
