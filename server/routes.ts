@@ -121,10 +121,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Exam already completed" });
       }
 
-      // Validate and clamp timeUsed: must be >= current stored value, <= total exam time (8 hours)
-      const TOTAL_EXAM_TIME = 28800;
+      // Validate timeUsed: must be >= current stored value (no time limit)
       const currentTimeUsed = session.timeUsed || 0;
-      const newTimeUsed = Math.max(currentTimeUsed, Math.min(Math.floor(timeUsed), TOTAL_EXAM_TIME));
+      const newTimeUsed = Math.max(currentTimeUsed, Math.floor(timeUsed));
 
       // Update time used
       const updatedSession = await storage.updateExamSession(sessionKey, {

@@ -6,7 +6,7 @@ interface ExamHeaderProps {
   session: ExamSession | null;
   currentQuestion: number;
   totalQuestions: number;
-  timeLeft: string;
+  elapsedTime: string;
   progress: number;
 }
 
@@ -14,16 +14,9 @@ export default function ExamHeader({
   session, 
   currentQuestion, 
   totalQuestions, 
-  timeLeft, 
+  elapsedTime, 
   progress 
 }: ExamHeaderProps) {
-  const getTimeColor = (timeString: string) => {
-    const [minutes] = timeString.split(':').map(Number);
-    if (minutes <= 5) return 'text-red-600';
-    if (minutes <= 15) return 'text-amber-600';
-    return 'text-aviation-blue';
-  };
-
   return (
     <Card className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
       <CardContent className="p-0">
@@ -35,10 +28,10 @@ export default function ExamHeader({
             </p>
           </div>
           <div className="text-right">
-            <div className={`text-2xl font-bold ${getTimeColor(timeLeft)}`}>
-              {timeLeft}
+            <div className="text-2xl font-bold text-aviation-blue">
+              {elapsedTime}
             </div>
-            <div className="text-sm text-professional-gray">Time Remaining</div>
+            <div className="text-sm text-professional-gray">Time Elapsed</div>
           </div>
         </div>
         

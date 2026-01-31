@@ -12,8 +12,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { LogOut, Save } from "lucide-react";
 import type { Question } from "@shared/schema";
 
-const TOTAL_EXAM_TIME = 28800; // 8 hours in seconds
-
 export default function Examination() {
   const { sessionKey } = useParams();
   const [, setLocation] = useLocation();
@@ -22,7 +20,7 @@ export default function Examination() {
   
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [timeLeft, setTimeLeft] = useState(TOTAL_EXAM_TIME);
+  const [elapsedTime, setElapsedTime] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [flaggedQuestions, setFlaggedQuestions] = useState<number[]>([]);
@@ -75,12 +73,11 @@ export default function Examination() {
       setQuestions(data.questions);
       setExamInitialized(true);
       
-      // Use timeUsed from server to calculate remaining time (pause/resume support)
+      // Use timeUsed from server to track elapsed time
       const timeUsed = data.timeUsed || 0;
       setSavedTimeUsed(timeUsed);
       sessionStartRef.current = Date.now();
-      const remaining = Math.max(0, TOTAL_EXAM_TIME - timeUsed);
-      setTimeLeft(remaining);
+      setElapsedTime(timeUsed);
       
       // Restore previous state if continuing
       if (data.session.answers) {
@@ -169,24 +166,14 @@ export default function Examination() {
     },
   });
 
-  // Timer effect
+  // Timer effect - counts up to show elapsed time (no time limit)
   useEffect(() => {
-    if (timeLeft <= 0) {
-      toast({
-        title: "Time Expired",
-        description: "Your exam time has expired. Submitting automatically.",
-        variant: "destructive",
-      });
-      submitExamMutation.mutate();
-      return;
-    }
-
     const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
+      setElapsedTime((prev) => prev + 1);
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, submitExamMutation]);
+  }, []);
 
   // Auto-save time every 30 seconds
   useEffect(() => {
@@ -338,7 +325,7 @@ export default function Examination() {
         session={session}
         currentQuestion={currentQuestion}
         totalQuestions={50}
-        timeLeft={formatTime(timeLeft)}
+        elapsedTime={formatTime(elapsedTime)}
         progress={(currentQuestion / 50) * 100}
       />
 

@@ -31,7 +31,7 @@ export default function Home() {
             <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
               <Clock className="text-aviation-blue text-xl mb-2 mx-auto" />
               <h3 className="font-semibold text-professional-gray-dark">Time Limit</h3>
-              <p className="text-sm text-professional-gray">8 hours maximum</p>
+              <p className="text-sm text-professional-gray">No time limit</p>
             </div>
             <div className="bg-green-50 rounded-lg p-4 border border-green-100">
               <Percent className="text-green-600 text-xl mb-2 mx-auto" />
