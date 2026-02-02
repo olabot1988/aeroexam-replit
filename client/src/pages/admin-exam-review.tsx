@@ -2,12 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { BookOpen, ArrowLeft, CheckCircle, XCircle, Clock, User, Calendar, Flag } from "lucide-react";
+import { BookOpen, ArrowLeft, CheckCircle, XCircle, Clock, User, Calendar, Flag, Download } from "lucide-react";
 import { useLocation, useRoute } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import type { ExamSession, Question } from "@shared/schema";
 import { format } from "date-fns";
+import { jsPDF } from "jspdf";
 
 interface ExamReviewData {
   examSession: ExamSession;
@@ -66,6 +67,149 @@ export default function AdminExamReview() {
       icon: isCorrect ? CheckCircle : XCircle,
       color: isCorrect ? "text-green-600" : "text-red-600"
     };
+  };
+
+  const generatePDF = () => {
+    if (!reviewData) return;
+
+    const { examSession, questions, userAnswers } = reviewData;
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 20;
+    const contentWidth = pageWidth - 2 * margin;
+    let yPosition = 20;
+
+    const addNewPageIfNeeded = (requiredSpace: number) => {
+      if (yPosition + requiredSpace > 270) {
+        doc.addPage();
+        yPosition = 20;
+      }
+    };
+
+    const wrapText = (text: string, maxWidth: number): string[] => {
+      return doc.splitTextToSize(text, maxWidth);
+    };
+
+    doc.setFontSize(18);
+    doc.setFont("helvetica", "bold");
+    doc.text("Aviation Maintenance Examination Results", margin, yPosition);
+    yPosition += 15;
+
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Generated: ${format(new Date(), "MMM d, yyyy HH:mm")}`, margin, yPosition);
+    yPosition += 15;
+
+    doc.setDrawColor(200);
+    doc.line(margin, yPosition, pageWidth - margin, yPosition);
+    yPosition += 10;
+
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text("Examinee Information", margin, yPosition);
+    yPosition += 8;
+
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Name: ${examSession.firstName} ${examSession.lastName}`, margin, yPosition);
+    yPosition += 6;
+    doc.text(`Maintenance Level: ${examSession.maintenanceLevel}`, margin, yPosition);
+    yPosition += 6;
+    doc.text(`Exam Type: ${examSession.examType}`, margin, yPosition);
+    yPosition += 6;
+    
+    const examDur = examSession.startTime && examSession.endTime
+      ? Math.floor((new Date(examSession.endTime).getTime() - new Date(examSession.startTime).getTime()) / 1000)
+      : null;
+    doc.text(`Duration: ${examDur ? formatDuration(examDur) : "N/A"}`, margin, yPosition);
+    yPosition += 6;
+    doc.text(`Completed: ${examSession.endTime ? format(new Date(examSession.endTime), "MMM d, yyyy HH:mm") : "N/A"}`, margin, yPosition);
+    yPosition += 15;
+
+    doc.setDrawColor(200);
+    doc.line(margin, yPosition, pageWidth - margin, yPosition);
+    yPosition += 10;
+
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text("Results Summary", margin, yPosition);
+    yPosition += 8;
+
+    const PASSING = 90;
+    const didPass = (examSession.score || 0) >= PASSING;
+    const correct = questions.filter(q => {
+      const answer = normalizedAnswers[q.id];
+      return answer !== undefined && answer === q.correctAnswer;
+    }).length;
+
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Final Score: ${examSession.score}%`, margin, yPosition);
+    yPosition += 6;
+    doc.text(`Status: ${didPass ? "PASSED" : "FAILED"}`, margin, yPosition);
+    yPosition += 6;
+    doc.text(`Questions Correct: ${correct} / ${questions.length}`, margin, yPosition);
+    yPosition += 6;
+    doc.text(`Required Score: ${PASSING}%`, margin, yPosition);
+    yPosition += 15;
+
+    doc.setDrawColor(200);
+    doc.line(margin, yPosition, pageWidth - margin, yPosition);
+    yPosition += 10;
+
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text("Question Details", margin, yPosition);
+    yPosition += 10;
+
+    questions.forEach((question, index) => {
+      const userAnswer = normalizedAnswers[question.id];
+      const isCorrect = userAnswer !== undefined && userAnswer === question.correctAnswer;
+
+      addNewPageIfNeeded(60);
+
+      doc.setFontSize(11);
+      doc.setFont("helvetica", "bold");
+      const statusText = userAnswer === undefined ? "[No Answer]" : isCorrect ? "[Correct]" : "[Incorrect]";
+      doc.text(`Question ${index + 1} ${statusText}`, margin, yPosition);
+      yPosition += 6;
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      const questionLines = wrapText(question.text, contentWidth);
+      questionLines.forEach(line => {
+        addNewPageIfNeeded(6);
+        doc.text(line, margin, yPosition);
+        yPosition += 5;
+      });
+      yPosition += 3;
+
+      if (Array.isArray(question.options)) {
+        question.options.forEach((option: string, optIndex: number) => {
+          addNewPageIfNeeded(8);
+          const letter = String.fromCharCode(65 + optIndex);
+          const isUserAns = userAnswer === optIndex;
+          const isCorrectAns = optIndex === question.correctAnswer;
+          
+          let marker = "";
+          if (isCorrectAns && isUserAns) marker = " [Your Answer - Correct]";
+          else if (isCorrectAns) marker = " [Correct Answer]";
+          else if (isUserAns) marker = " [Your Answer - Incorrect]";
+
+          const optionText = `${letter}. ${option}${marker}`;
+          const optionLines = wrapText(optionText, contentWidth - 5);
+          optionLines.forEach(line => {
+            addNewPageIfNeeded(5);
+            doc.text(line, margin + 5, yPosition);
+            yPosition += 5;
+          });
+        });
+      }
+      yPosition += 8;
+    });
+
+    const fileName = `Exam_Results_${examSession.lastName}_${examSession.firstName}_${format(new Date(), "yyyyMMdd")}.pdf`;
+    doc.save(fileName);
   };
 
   if (isLoading) {
@@ -146,9 +290,19 @@ export default function AdminExamReview() {
               Back to Completed Exams
             </Button>
             
-            <Badge variant={passed ? "default" : "destructive"} className={`text-lg px-4 py-2 ${passed ? "bg-green-500" : ""}`}>
-              {passed ? "PASSED" : "FAILED"}
-            </Badge>
+            <div className="flex items-center gap-3">
+              <Button 
+                variant="outline"
+                onClick={generatePDF}
+                data-testid="button-download-pdf"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download PDF
+              </Button>
+              <Badge variant={passed ? "default" : "destructive"} className={`text-lg px-4 py-2 ${passed ? "bg-green-500" : ""}`}>
+                {passed ? "PASSED" : "FAILED"}
+              </Badge>
+            </div>
           </div>
 
           <div className="flex items-center space-x-3 mb-4">
