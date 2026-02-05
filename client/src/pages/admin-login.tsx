@@ -135,14 +135,6 @@ export default function AdminLogin() {
             </form>
           </Form>
 
-          {/* Demo Credentials Notice */}
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
-            <p className="text-sm text-professional-gray text-center">
-              <strong>Demo Credentials:</strong><br />
-              Username: admin<br />
-              Password: admin123
-            </p>
-          </div>
         </CardContent>
       </Card>
     </div>
