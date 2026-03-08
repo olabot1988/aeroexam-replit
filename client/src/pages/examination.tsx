@@ -362,12 +362,12 @@ export default function Examination() {
       )}
 
       {/* Exam Controls */}
-      <Card className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+      <Card className="rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
         <CardContent className="p-0">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="outline" className="text-professional-gray">
+                <Button variant="outline" className="w-full text-professional-gray sm:w-auto">
                   <Save className="mr-2 h-4 w-4" />
                   Leave Exam
                 </Button>
@@ -390,7 +390,7 @@ export default function Examination() {
 
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="destructive">
+                <Button variant="destructive" className="w-full sm:w-auto">
                   <LogOut className="mr-2 h-4 w-4" />
                   Quit Test
                 </Button>

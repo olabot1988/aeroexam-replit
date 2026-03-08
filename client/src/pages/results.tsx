@@ -103,7 +103,7 @@ export default function Results() {
             <Button 
               variant="outline"
               onClick={handleReturnHome}
-              className="flex-1 max-w-xs"
+              className="w-full sm:flex-1 sm:max-w-xs"
             >
               <Home className="mr-2 h-4 w-4" />
               Return Home
@@ -111,7 +111,7 @@ export default function Results() {
             
             <Button 
               onClick={handleNewExam}
-              className="flex-1 max-w-xs bg-aviation-blue hover:bg-aviation-blue-dark"
+              className="w-full sm:flex-1 sm:max-w-xs bg-aviation-blue hover:bg-aviation-blue-dark"
             >
               <RotateCcw className="mr-2 h-4 w-4" />
               Start New Examination

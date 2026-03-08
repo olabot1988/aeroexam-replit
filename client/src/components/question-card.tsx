@@ -26,47 +26,46 @@ export default function QuestionCard({
   onNext,
   canGoBack,
   isLastQuestion,
-  isSubmitting
+  isSubmitting,
 }: QuestionCardProps) {
   const options = question.options as string[];
 
   return (
-    <Card className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-      <CardContent className="space-y-6 p-0">
-        <div className="flex items-start space-x-4">
-          <div className="bg-aviation-blue text-white rounded-full w-8 h-8 flex items-center justify-center font-semibold text-sm flex-shrink-0">
+    <Card className="rounded-2xl border-slate-200/80 bg-white/95 shadow-lg">
+      <CardContent className="space-y-6 p-4 sm:p-6 lg:p-8">
+        <div className="flex items-start gap-3 sm:gap-4">
+          <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-semibold text-white">
             {questionNumber}
           </div>
-          <div className="flex-1">
-            <h3 className="text-lg font-semibold text-professional-gray-dark mb-4">
+          <div className="min-w-0 flex-1">
+            <h3 className="mb-4 text-base font-semibold leading-relaxed text-slate-900 sm:text-lg">
               {question.text}
             </h3>
-            
-            {/* Answer Choices */}
+
             <div className="space-y-3">
               {options.map((option, index) => {
-                const letter = String.fromCharCode(65 + index); // A, B, C, D
+                const letter = String.fromCharCode(65 + index);
                 const isSelected = selectedAnswer === index;
-                
+
                 return (
-                  <label 
+                  <label
                     key={index}
-                    className={`flex items-center p-4 rounded-lg cursor-pointer transition-colors border ${
-                      isSelected 
-                        ? 'bg-blue-50 border-aviation-blue' 
-                        : 'bg-gray-50 border-gray-200 hover:bg-blue-50 hover:border-aviation-blue'
+                    className={`flex cursor-pointer items-start rounded-xl border p-3 transition-colors sm:items-center sm:p-4 ${
+                      isSelected
+                        ? "border-sky-500 bg-sky-50"
+                        : "border-slate-200 bg-slate-50 hover:border-sky-300 hover:bg-sky-50"
                     }`}
                   >
-                    <input 
-                      type="radio" 
-                      name="answer" 
+                    <input
+                      type="radio"
+                      name="answer"
                       value={index}
                       checked={isSelected}
                       onChange={() => onAnswerSelect(index)}
-                      className="mr-4 text-aviation-blue focus:ring-aviation-blue"
+                      className="mt-1 mr-3 text-sky-600 focus:ring-sky-500 sm:mt-0 sm:mr-4"
                     />
-                    <span className="text-professional-gray-dark">
-                      <span className="font-medium mr-2">{letter}.</span>
+                    <span className="text-sm leading-relaxed text-slate-800 sm:text-base">
+                      <span className="mr-2 font-semibold">{letter}.</span>
                       {option}
                     </span>
                   </label>
@@ -75,38 +74,37 @@ export default function QuestionCard({
             </div>
           </div>
         </div>
-        
-        {/* Navigation Buttons */}
-        <div className="flex justify-between items-center pt-6 border-t border-gray-200">
-          <Button 
-            variant="outline"
-            onClick={onPrevious}
-            disabled={!canGoBack}
-            className="font-semibold"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Previous
-          </Button>
-          
-          <div className="flex space-x-3">
-            <Button 
+
+        <div className="space-y-3 border-t border-slate-200 pt-5">
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
+            <Button
+              variant="outline"
+              onClick={onPrevious}
+              disabled={!canGoBack}
+              className="w-full sm:w-auto"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Previous
+            </Button>
+
+            <Button
               variant="outline"
               onClick={onFlag}
-              className="bg-amber-100 hover:bg-amber-200 text-amber-700 border-amber-200"
+              className="w-full border-amber-200 bg-amber-50 text-amber-700 hover:bg-amber-100 sm:w-auto"
             >
               <Flag className="mr-2 h-4 w-4" />
               Flag for Review
             </Button>
-            
-            <Button 
-              onClick={onNext}
-              disabled={isSubmitting}
-              className="bg-aviation-blue hover:bg-aviation-blue-dark font-semibold"
-            >
-              {isSubmitting ? 'Submitting...' : (isLastQuestion ? 'Submit Exam' : 'Next')}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
           </div>
+
+          <Button
+            onClick={onNext}
+            disabled={isSubmitting}
+            className="w-full bg-gradient-to-r from-sky-600 to-indigo-600 font-semibold hover:from-sky-700 hover:to-indigo-700"
+          >
+            {isSubmitting ? "Submitting..." : isLastQuestion ? "Submit Exam" : "Next"}
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
         </div>
       </CardContent>
     </Card>
