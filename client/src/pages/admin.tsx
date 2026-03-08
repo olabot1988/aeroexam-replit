@@ -158,8 +158,8 @@ export default function Admin() {
 
   return (
     <div className="space-y-6">
-      <Card className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-        <CardContent className="p-0">
+      <Card className="overflow-hidden rounded-2xl border-slate-200/80 bg-white/90 shadow-xl">
+        <CardContent className="p-6 sm:p-8">
           {/* Progress Indicator */}
           <div className="mb-8">
             <div className="flex items-center justify-between text-sm text-professional-gray-light mb-2">
@@ -169,17 +169,17 @@ export default function Admin() {
             <Progress value={33} className="w-full" />
           </div>
 
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-professional-gray-dark mb-2">
-              Mechanic Registration
+          <div className="mb-8 text-center">
+            <h2 className="mb-2 text-3xl font-bold tracking-tight text-slate-900">
+              Candidate Registration
             </h2>
-            <p className="text-professional-gray">
-              Please provide your information to begin the examination
+            <p className="text-slate-600">
+              Enter your details to start or resume your maintenance exam session
             </p>
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-lg mx-auto">
-            <TabsList className="grid w-full grid-cols-2">
+            <TabsList className="grid w-full grid-cols-2 rounded-xl bg-slate-100 p-1">
               <TabsTrigger value="new">New Exam</TabsTrigger>
               <TabsTrigger value="continue">Continue Exam</TabsTrigger>
             </TabsList>
@@ -314,7 +314,7 @@ export default function Admin() {
                     </Button>
                     <Button 
                       type="submit"
-                      className="flex-1 bg-aviation-blue hover:bg-aviation-blue-dark"
+                      className="flex-1 bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-700 hover:to-indigo-700"
                       disabled={createExamMutation.isPending}
                     >
                       {createExamMutation.isPending ? "Creating..." : "Continue"}
@@ -381,7 +381,7 @@ export default function Admin() {
                     </Button>
                     <Button 
                       type="submit"
-                      className="flex-1 bg-aviation-blue hover:bg-aviation-blue-dark"
+                      className="flex-1 bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-700 hover:to-indigo-700"
                       disabled={continueExamMutation.isPending}
                     >
                       {continueExamMutation.isPending ? "Loading..." : "Continue Exam"}
